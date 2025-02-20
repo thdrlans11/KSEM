@@ -1,0 +1,124 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT'].'/include/header.inc';
+?>
+
+<section id="container">
+    <article class="sub-visual">
+        <div class="sub-visual-con inner-layer">
+        </div>
+    </article>
+    <article class="sub-menu-wrap">
+        <div class="sub-menu">
+            <ul class="sub-menu-list js-sub-menu-list cf">
+                <li class="sub-menu-depth01">
+                    <a href="#n" class="btn-sub-menu js-btn-sub-menu">초록 구연 및 포스터 접수</a>
+                    <ul>
+                        <li><a href="#n">인사말</a></li>
+                        <li><a href="#n">학회 프로그램</a></li>
+                        <li><a href="#n">초록 구연 및 포스터 접수</a></li>
+                        <li><a href="#n">사전등록</a></li>
+                        <li><a href="#n">강의원고</a></li>
+                        <li><a href="#n">워크숍 신청</a></li>
+                        <li><a href="#n">행사장 안내</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu-depth02">
+                    <a href="#n" class="btn-sub-menu js-btn-sub-menu">초록접수</a>
+                    <ul>
+                        <li><a href="#n">초록접수 안내</a></li>
+                        <li class="on"><a href="#n">초록접수</a></li>
+                        <li><a href="#n">초록접수 수정 및 확인</a></li>
+                        <li><a href="#n">초록심사</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="breadcrumb">
+                <li><img src="/assets/image/sub/img_breadcrumb.png" alt=""></li>
+                <li>HOME</li>
+                <li class="font-suit">&gt;</li>
+                <li>초록 구연 및 포스터 접수</li>
+                <li class="font-suit">&gt;</li>
+                <li>초록접수</li>
+            </ul>
+        </div>
+    </article>
+    <article class="sub-contents">
+        <div class="sub-conbox inner-layer">
+
+            <div class="page-tit-wrap">
+                <h3 class="page-tit">초록접수</h3>
+            </div>
+
+            <form action="" method="">
+                <fieldset>
+                    <legend class="hide">초록접수</legend>
+                    <div class="write-wrap">
+                        <ul>
+                            <li>
+                                <div class="form-tit">종류 <strong class="required">*</strong></div>
+                                <div class="form-con">
+                                    <input type="text" name="" id="" class="form-item">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-tit">분야 <strong class="required">*</strong></div>
+                                <div class="form-con">
+                                    <input type="text" name="" id="" class="form-item">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-tit">발표자 성명 <strong class="required">*</strong></div>
+                                <div class="form-con">
+                                    <input type="text" name="" id="" class="form-item">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-tit">비밀번호 <strong class="required">*</strong></div>
+                                <div class="form-con">
+                                    <input type="password" name="" id="" class="form-item">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-tit">발표자 이메일  <strong class="required">*</strong></div>
+                                <div class="form-con">
+                                    <input type="text" name="" id="" class="form-item">
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="help-text text-red mt-10">* 발표자 성명, 비밀번호, 발표자 이메일 정보는 초록접수 확인 시 필요한 정보이므로 정확하게 기재해주세요.</p>
+                    </div>
+
+                    <div class="sub-tit-wrap">
+                        <h4 class="sub-tit">Preventing Automation Program Entry</h4>
+                    </div>
+                    <div class="write-wrap">
+                        <ul>
+                            <li>
+                                <div class="form-con">
+                                    <div class="captcha">
+                                        <span class="img"><img id="captcha_img" src="/assets/image/sub/captcha.png"></span>
+                                        <img src="/assets/image/sub/ic_refresh.png" class="refresh" onclick="refresh_captcha();return false;">
+                                        <input type="text" name="captcha" id="captcha" class="form-item">
+                                    </div>
+                                    <p class="help-text mt-10 text-blue">
+                                        * For information security, you can register as a member after entering the text written below.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="btn-wrap text-center">
+                        <a href="./guide.html" class="btn btn-type1 color-type1">이전</a>
+                        <button type="submit" class="btn btn-type1 color-type2">다음</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </article>
+</section>
+
+<?php
+include $_SERVER['DOCUMENT_ROOT'].'/include/footer.inc';
+?>

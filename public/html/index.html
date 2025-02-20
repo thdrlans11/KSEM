@@ -1,40 +1,246 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <title>2025년도 대한응급의학회 춘계학술대회</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no, address=no, email=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="Author" content="프로젝트이름">
-    <meta name="Keywords" content="프로젝트이름">
-    <meta name="description" content="프로젝트이름">
-    <title>프로젝트이름</title>
-    <link type="text/css" rel="stylesheet" href="/assets/css/slick.css">
-    <link type="text/css" rel="stylesheet" href="/assets/css/common.css">
-    <link type="text/css" rel="stylesheet" href="/assets/css/jquery-ui.min.css">
-    <script type="text/javascript" src="/assets/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/assets/js/slick.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.rwdImageMaps.js"></script>
-    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="Author" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta name="Keywords" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta name="description" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta property="og:title" content="2025년도 대한응급의학회 춘계학술대회">
+    <link rel="icon" href="/assets/image/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
+    <script src="/assets/js/slick.min.js"></script>
+    <script src="/assets/js/common.js"></script>
 </head>
 <body>
+    
     <!-- 
-        main일 때 calss="main"
+        main일 때 class="main"
         sub일 때 class="sub"
     -->
-    <div class="wrap main">
+    <div id="wrap" class="main">
         <!-- header -->
-        <header>
+        <header id="header" class="js-header">
+            <div class="header-wrap inner-layer">
+                <h1 class="header-logo"><a href="#n"><img src="/assets/image/common/h1-logo.png" alt=""></a></h1>
+                <div class="right">
+                    <div class="top t-hide">
+                        <div class="dday-wrap">
+                            <img src="/assets/image/common/ic_dday.png" alt="">
+                            <p class="today">TODAY 2023.01.01</p>
+                            <p class="dday">D - 000</p>
+                        </div>
+                        <div class="util-menu-wrap m-hide">
+                            <ul class="util-menu">
+                                <li><a href="#n">대한응급의학회 홈페이지</a></li>
+                                <li><a href="#n">행사 HOME</a></li>
+                                <li><a href="#n">지난 학술대회 바로가기</a></li>
+                                <li><a href="#n">ADMIN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <nav id="gnb">
+                        <div class="m-gnb-header t-show m-show">
+                            <a href="#n" class="btn btn-link">대한응급의학회 홈페이지</a>
+                            <div class="util-wrap">
+                                <ul class="util-menu">
+                                    <li><a href="#n">SIGN UP</a></li>
+                                    <li><a href="#n">LOGIN</a></li>
+                                    <li><a href="#n">ADMIN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="gnb-wrap">
+                            <ul class="gnb js-gnb">
+                                <li>
+                                    <a href="#n"><span>인사말</span></a>
+                                    <ul>
+                                        <li><a href="#n">인사말</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>학회 프로그램</span></a>
+                                    <ul>
+                                        <li><a href="#n">전체 프로그램</a></li>
+                                        <li><a href="#n">세부 프로그램</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>초록 구연 및 포스터 접수</span></a>
+                                    <ul>
+                                        <li><a href="#n">초록접수 안내</a></li>
+                                        <li><a href="#n">초록접수</a></li>
+                                        <li><a href="#n">초록접수 수정 및 확인</a></li>
+                                        <li><a href="#n">초록심사</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>사전등록</span></a>
+                                    <ul>
+                                        <li><a href="#n">사전등록 안내</a></li>
+                                        <li><a href="#n">사전등록</a></li>
+                                        <li><a href="#n">사전등록 확인 및 영수증</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>강의원고</span></a>
+                                    <ul>
+                                        <li><a href="#n">강의원고 접수 안내</a></li>
+                                        <li><a href="#n">강의원고 접수</a></li>
+                                        <li><a href="#n">강의원고 수정 및 확인</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>워크숍 신청</span></a>
+                                    <ul>
+                                        <li><a href="#n">워크숍 등록 안내</a></li>
+                                        <li><a href="#n">워크숍 신청</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>행사장 안내</span></a>
+                                    <ul>
+                                        <li><a href="#n">오시는 길</a></li>
+                                        <li><a href="#n">부스 배치도</a></li>
+                                        <li><a href="#n">학회장 보기</a></li>
+                                        <li><a href="#n">호텔 예약 안내</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-menu-close js-btn-menu-close"><span class="hide">메뉴 닫기</span></button>
+                    </nav>
+                </div>
+                <a href="#n" class="btn-home t-show m-show"><img src="/assets/image/common/ic_home.png" alt="Home"></a>
+                <button type="button" class="btn btn-menu-open js-btn-menu-open"><span class="hide">메뉴 열기</span></button>
+            </div>
+            <div id="dim" class="js-dim"></div>
         </header>
         <!-- //header -->
-        
+
         <section id="container">
+            <article class="inner-layer">
+                <div class="section main-visual-top">
+                    <div class="main-visual-wrap">
+                        <div class="main-visual">
+                            <div class="slide-con-slide">
+                                <a href="#n">
+                                    <img src="/assets/image/main/main_visual.png" alt="" class="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-aside">
+                        <div class="main-aside-con menu1 m-hide">
+                            <div class="box">
+                                <a href="#n">학회 프로그램</a>
+                                <ul class="list-type list-type-dot">
+                                    <li><a href="#n">전체 프로그램</a></li>
+                                    <li><a href="#n">세부 프로그램</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-aside-con menu2 m-hide">
+                            <div class="box">
+                                <a href="#n">사전등록</a>
+                                <ul class="list-type list-type-dot">
+                                    <li><a href="#n">사전등록 안내</a></li>
+                                    <li><a href="#n">사전등록</a></li>
+                                    <li><a href="#n">사전등록 확인 및 영수증</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-aside-con menu1 m-show">
+                            <div class="box">
+                                <a href="#n">Voting</a>
+                            </div>
+                        </div>
+                        <div class="main-aside-con menu2 m-show">
+                            <div class="box">
+                                <a href="#n">Q&A</a>
+                            </div>
+                        </div>
+                        <div class="main-aside-con menu3">
+                            <div class="box">
+                                <a href="#n">강의원고 접수</a>
+                                <ul class="list-type list-type-dot">
+                                    <li><a href="#n">강의원고 접수 안내</a></li>
+                                    <li><a href="#n">강의원고 접수</a></li>
+                                    <li><a href="#n">강의원고 수정 및 확인</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-aside-con menu4">
+                            <div class="box">
+                                <a href="#n">행사장 안내</a>
+                                <ul class="list-type list-type-dot">
+                                    <li><a href="#n">오시는 길</a></li>
+                                    <li><a href="#n">부스 배치도</a></li>
+                                    <li><a href="#n">학회장 보기</a></li>
+                                    <li><a href="#n">호텔 예약 안내</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section link-wrap">
+                    <div class="main-tit-wrap">
+                        <img src="/assets/image/main/ic_noti.png" alt="">
+                        <p class="main-tit">주요일정</p>
+                    </div>
+                    <div class="col-wrap">
+                        <div class="col2">
+                            <div>
+                                <p class="title">온라인 사전등록</p>
+                                <p class="date">2025-02-01 ~ 2025-03-31</p>
+                            </div>
+                            <p class="dday">D - 100</p>
+                        </div>
+                        <div class="col2">
+                            <div>
+                                <p class="title">강의원고 등록</p>
+                                <p class="date">2025-02-01 ~ 2025-03-31</p>
+                            </div>
+                            <p class="dday">D - 100</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </section>
 
         <!-- footer -->
         <footer id="footer">
+            <div class="footer-wrap inner-layer">
+                <div class="footer-logo"><img src="/assets/image/common/footer-logo.png" alt=""></div>
+                <ul>
+                    <li>
+                        <p>(04510) 서울특별시 중구 청파로 464, 101동 3104호 (중림동, 브라운스톤서울)</p>
+                    </li>
+                    <li>
+                        <p><span>TEL </span><a href="tel:02-3676-1333">(02) 3676-1333</a></p>
+                        <p><span>FAX </span>(02) 3676-1339</p>
+                        <p><span>EMAIL </span><a href="mailto:office@emergency.or.kr">office@emergency.or.kr</a></p>
+                    </li>
+                    <li>
+                        <p><span>COPYRIGHT 대한응급의학회 (THE KOREAN SOCIETY OF EMERGENCY MEDICINE) ALL RIGHTS RESERVED.</span></p>
+                    </li>
+                </ul>
+            </div>
         </footer>
         <!-- //footer -->
     </div>

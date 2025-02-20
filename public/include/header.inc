@@ -2,122 +2,131 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <title>2025년도 대한응급의학회 춘계학술대회</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no, address=no, email=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="Author" content="대한환경공학회">
-    <meta name="Keywords" content="대한환경공학회">
-    <meta name="description" content="대한환경공학회">
-    <title>대한환경공학회</title>
-    <link type="text/css" rel="stylesheet" href="/assets/css/slick.css">
-    <link type="text/css" rel="stylesheet" href="/assets/css/common.css">
-    <link type="text/css" rel="stylesheet" href="/assets/css/jquery-ui.min.css">
-    <script type="text/javascript" src="/assets/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/assets/js/slick.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.rwdImageMaps.js"></script>
-    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="Author" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta name="Keywords" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta name="description" content="2025년도 대한응급의학회 춘계학술대회">
+    <meta property="og:title" content="2025년도 대한응급의학회 춘계학술대회">
+    <link rel="icon" href="/assets/image/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
+    <script src="/assets/js/slick.min.js"></script>
+    <script src="/assets/js/common.js"></script>
 </head>
 <body>
+    
     <!-- 
-        main일 때 calss="main"
+        main일 때 class="main"
         sub일 때 class="sub"
     -->
-    <div class="wrap sub">
+    <div id="wrap" class="sub">
         <!-- header -->
         <header id="header" class="js-header">
-            <div class="header-wrap">
-                <div class="inner-layer">
-                    <h1 class="header-logo">
-                        <a href="/"><img src="/assets/image/common/h1_logo.png" alt=""></a>
-                    </h1>
-                    <ul class="util-menu">
-                        <li><a href="#n"><img src="/assets/image/common/ic_login.png" alt="">LOGIN</a></li>
-                        <li><a href="#n"><img src="/assets/image/common/ic_signup.png" alt="">SIGN UP</a></li>
-                        <li><a href="#n"><img src="/assets/image/common/ic_admin.png" alt="">ADMIN</a></li>
-                    </ul>
-                    <button type="button" class="btn btn-menu-open js-btn-menu-open"><span class="hide">메뉴 열기</span></button>
+            <div class="header-wrap inner-layer">
+                <h1 class="header-logo"><a href="#n"><img src="/assets/image/common/h1-logo.png" alt=""></a></h1>
+                <div class="right">
+                    <div class="top t-hide">
+                        <div class="dday-wrap">
+                            <img src="/assets/image/common/ic_dday.png" alt="">
+                            <p class="today">TODAY 2023.01.01</p>
+                            <p class="dday">D - 000</p>
+                        </div>
+                        <div class="util-menu-wrap m-hide">
+                            <ul class="util-menu">
+                                <li><a href="#n">대한응급의학회 홈페이지</a></li>
+                                <li><a href="#n">행사 HOME</a></li>
+                                <li><a href="#n">지난 학술대회 바로가기</a></li>
+                                <li><a href="#n">ADMIN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <nav id="gnb">
+                        <div class="m-gnb-header t-show m-show">
+                            <a href="#n" class="btn btn-link">대한응급의학회 홈페이지</a>
+                            <div class="util-wrap">
+                                <ul class="util-menu">
+                                    <li><a href="#n">SIGN UP</a></li>
+                                    <li><a href="#n">LOGIN</a></li>
+                                    <li><a href="#n">ADMIN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="gnb-wrap">
+                            <ul class="gnb js-gnb">
+                                <li>
+                                    <a href="#n"><span>인사말</span></a>
+                                    <ul>
+                                        <li><a href="#n">인사말</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>학회 프로그램</span></a>
+                                    <ul>
+                                        <li><a href="#n">전체 프로그램</a></li>
+                                        <li><a href="#n">세부 프로그램</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>초록 구연 및 포스터접수</span></a>
+                                    <ul>
+                                        <li><a href="#n">초록접수 안내</a></li>
+                                        <li><a href="#n">초록접수</a></li>
+                                        <li><a href="#n">초록접수 수정 및 확인</a></li>
+                                        <li><a href="#n">초록심사</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>사전등록</span></a>
+                                    <ul>
+                                        <li><a href="#n">사전등록 안내</a></li>
+                                        <li><a href="#n">사전등록</a></li>
+                                        <li><a href="#n">사전등록 확인 및 영수증</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>강의원고</span></a>
+                                    <ul>
+                                        <li><a href="#n">강의원고 접수 안내</a></li>
+                                        <li><a href="#n">강의원고 접수</a></li>
+                                        <li><a href="#n">강의원고 수정 및 확인</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>워크숍 신청</span></a>
+                                    <ul>
+                                        <li><a href="#n">워크숍 등록 안내</a></li>
+                                        <li><a href="#n">워크숍 신청</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#n"><span>행사장 안내</span></a>
+                                    <ul>
+                                        <li><a href="#n">오시는 길</a></li>
+                                        <li><a href="#n">부스 배치도</a></li>
+                                        <li><a href="#n">학회장 보기</a></li>
+                                        <li><a href="#n">호텔 예약 안내</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-menu-close js-btn-menu-close"><span class="hide">메뉴 닫기</span></button>
+                    </nav>
                 </div>
+                <a href="#n" class="btn-home t-show m-show"><img src="/assets/image/common/ic_home.png" alt="Home"></a>
+                <button type="button" class="btn btn-menu-open js-btn-menu-open"><span class="hide">메뉴 열기</span></button>
             </div>
-
             <div id="dim" class="js-dim"></div>
-            <nav id="gnb" class="inner-layer">
-                <div class="m-gnb-header">
-                    <img src="/assets/image/common/h1_logo.png" alt="">
-                    <button type="button" class="btn btn-menu-close js-btn-menu-close"><span class="hide">메뉴 닫기</span></button>
-                </div>
-                <ul class="util-menu">
-                    <li><a href="#n" class="btn btn-type1 color-type2">로그인</a></li>
-                    <li><a href="#n" class="btn btn-type1 color-type5">회원가입</a></li>
-                </ul>
-                <div class="gnb-wrap">
-                    <ul class="gnb js-gnb">
-                        <li>
-                            <a href="#n"><span>학회소개</span></a>
-                            <ul>
-                                <li><a href="#n">학회장 인사말</a></li>
-                                <li><a href="#n">설립목적</a></li>
-                                <li><a href="#n">CI 소개</a></li>
-                                <li><a href="#n">연혁</a></li>
-                                <li><a href="#n">임원진</a></li>
-                                <li><a href="#n">정관</a></li>
-                                <li><a href="#n">사무국 안내</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#n"><span>학술대회</span></a>
-                            <ul>
-                                <li><a href="#n">국내 학술대회</a></li>
-                                <li><a href="#n">전문가그룹 학술대회</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#n"><span>학술지 및 간행물</span></a>
-                            <ul>
-                                <li><a href="#n">국문지</a></li>
-                                <li><a href="#n">영문지</a></li>
-                                <li><a href="#n">인터넷 월간지</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#n"><span>회원관련</span></a>
-                            <ul>
-                                <li><a href="#n">회원가입 안내</a></li>
-                                <li><a href="#n">로그인</a></li>
-                                <li><a href="#n">아이디/비밀번호 찾기</a></li>
-                                <li><a href="#n">회비납부 현황조회</a></li>
-                                <li><a href="#n">학술대회 참석조회</a></li>
-                                <li><a href="#n">회원탈퇴</a></li>
-                                <li><a href="#n">구인·구직</a></li>
-                                <li><a href="#n">개인정보 취급 방침</a></li>
-                                <li><a href="#n">이메일 무단 수집 거부</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#n"><span>저널검색</span></a>
-                            <ul>
-                                <li><a href="#n">통합검색</a></li>
-                                <li><a href="#n">상세검색</a></li>
-                                <li><a href="#n">문헌리스트</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#n"><span>학회소식</span></a>
-                            <ul>
-                                <li><a href="#n">공지사항</a></li>
-                                <li><a href="#n">학회 일정 안내</a></li>
-                                <li><a href="#n">환경관련 행사소식</a></li>
-                                <li><a href="#n">연간일정</a></li>
-                                <li><a href="#n">기부금 현황</a></li>
-                                <li><a href="#n">포토 갤러리</a></li>
-                                <li><a href="#n">회원동정</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn-wrap">
-                    <a href="#n" class="btn btn-type1 color-type3">ADMIN</a>
-                </div>
-            </nav>
         </header>
         <!-- //header -->

@@ -17,9 +17,9 @@ return [
     ],
 
     'info' => [                
-        'siteName' => 'Base',
-        'name' => 'Base',
-        'email' => 'Base@Base.co.kr',
+        'siteName' => '2025년도 대한응급의학회 춘계학술대회',
+        'name' => '2025년도 대한응급의학회 춘계학술대회',
+        'email' => 'office@emergency.or.kr',
         'url' => env('APP_URL'),
         'ecareNum' => env('ECARE_NUMBER'),
     ],
