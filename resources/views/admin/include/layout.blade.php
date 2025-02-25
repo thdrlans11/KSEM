@@ -34,7 +34,7 @@
         <header id="header" class="js-header">
             <div class="header-wrap inner-layer wide">
                 <h1 class="header-logo">
-                    <a href="{{ route('main') }}"><img src="/assets/image/common/h1_logo.png" alt="{{ config('site.common.info.name') }}"></a>
+                    <a href="{{ route('main') }}"><img src="/assets/image/common/h1-logo.png" alt="{{ config('site.common.info.name') }}"></a>
                 </h1>
                 <div class="util-menu-wrap">
                     <p class="user-info">
@@ -47,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            {{-- <nav id="gnb" class="wide">
+            <nav id="gnb" class="wide">
                 <div class="gnb-wrap inner-layer wide">
                     <ul class="gnb">
                     	@foreach( config('site.menu.admin_menu') as $key => $val )
@@ -55,11 +55,10 @@
                         @endforeach
                     </ul>
                 </div>
-            </nav> --}}
+            </nav>
         </header>
 
         <section id="container" class="inner-layer wide">
-            
             @if( !isset($wrapClass) )
         	<div class="sub-contents">
             @endif
@@ -80,8 +79,8 @@
                 <div class="footer-con">
                     <span class="footer-logo">{{ config('site.common.info.name') }}</span>
                     <ul>
-                        <li><strong>E-Mail</strong>. <a href="mailto:info@icop2025.org " target="_blank">info@icop2025.org </a></li>
-                        <li><strong>TEL</strong>. <a href="tel:02-6959-5333 " target="_blank"> 02-6959-5333</a></li>
+                        <li><strong>E-Mail</strong>. <a href="mailto:office@emergency.or.kr" target="_blank">office@emergency.or.kr </a></li>
+                        <li><strong>TEL</strong>. <a href="tel:02-3676-1333 " target="_blank">02-3676-1333</a></li>
                     </ul>
                 </div>
             </div>

@@ -2,129 +2,93 @@
 return [
     'menu' => [
         '1' => [
-            'name' => 'About the Congress',
+            'name' => '인사말',
             'url' => "",
-            'route_target' => 'about.overview',
+            'route_target' => 'greeting.message',
             'route_param' => [],
         ],
         '2' => [
-            'name' => 'Program',
+            'name' => '학회프로그램',
             'url' => "",
             'route_target' => 'ready',
             'route_param' => ['mainNum'=>'2', 'subNum'=>'1'],
         ],
         '3' => [
-            'name' => 'Abstract',
+            'name' => '초록 구연 및 포스터접수',
             'url' => "",
             'route_target' => 'ready',
             'route_param' => ['mainNum'=>'3', 'subNum'=>'1'],
         ],
         '4' => [
-            'name' => 'Registration',
+            'name' => '사전등록',
             'url' => "",
             'route_target' => 'registration.guide',
             'route_param' => [],
+        ],        
+        '5' => [
+            'name' => '강의원고',
+            'url' => "",
+            'route_target' => 'lecture.guide',
+            'route_param' => [],
         ],
         '6' => [
-            'name' => 'Sponsors',
+            'name' => '워크숍신청',
             'url' => "",
             'route_target' => 'ready',
             'route_param' => ['mainNum'=>'6', 'subNum'=>'1'],
-        ],        
-        '5' => [
-            'name' => 'Location',
+        ],
+        '7' => [
+            'name' => '행사장안내',
             'url' => "",
-            'route_target' => 'location.venue',
-            'route_param' => [],
-        ]
+            'route_target' => 'ready',
+            'route_param' => ['mainNum'=>'7', 'subNum'=>'1'],
+        ],       
     ],
 
     'sub_menu' => [
         '1' => [
             '1' => [
-                'name' => 'Overview',
+                'name' => '인사말',
                 'url' => "",
-                'route_target' => 'about.overview',
+                'route_target' => 'greeting.message',
                 'route_param' => [],
-            ],
-            '2' => [
-                'name' => 'Welcome Message',
-                'url' => "",
-                'route_target' => 'about.welcome',
-                'route_param' => [],
-            ],
-            '3' => [
-                'name' => 'About Society',
-                'url' => "",
-                'route_target' => 'about.society',
-                'route_param' => [],
-            ],
-            '4' => [
-                'name' => 'Committee',
-                'url' => "",
-                'route_target' => 'about.committee',
-                'route_param' => [],
-            ],
-            '5' => [
-                'name' => 'Notice',
-                'url' => "",
-                'route_target' => 'board.list',
-                'route_param' => ['code'=>'notice'],
-            ],
-            '6' => [
-                'name' => 'Contact Info',
-                'url' => "",
-                'route_target' => 'about.contact',
-                'route_param' => [],
-            ],
+            ]
         ],
         '2' => [
             '1' => [
-                'name' => 'Program at a glance',
+                'name' => '전체프로그램',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'2', 'subNum'=>'1'],
             ],
             '2' => [
-                'name' => 'Program in Detail',
+                'name' => '세부프로그램',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'2', 'subNum'=>'2'],
-            ],
-            '3' => [
-                'name' => 'Plenary Lectures',
-                'url' => "",
-                'route_target' => 'program.speakers',
-                'route_param' => ['mainNum'=>'2', 'subNum'=>'3'],
-            ],
-            '4' => [
-                'name' => 'Special Symposia',
-                'url' => "",
-                'route_target' => 'ready',
-                'route_param' => ['mainNum'=>'2', 'subNum'=>'4'],
             ]
         ],
         '3' => [
             '1' => [
-                'name' => 'Abstract Guidelines',
+                'name' => '초록접수안내',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'3', 'subNum'=>'1'],
             ],
             '2' => [
-                'name' => 'Online Submission',
+                'name' => '초록접수',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'3', 'subNum'=>'2'],
             ],
             '3' => [
-                'name' => 'Abstract Review & Modification',
+                'name' => '초록접수 수정 및 확인',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'3', 'subNum'=>'3'],
             ],
             '4' => [
-                'name' => 'Presentation Guidelines',
+                'name' => '초록심사',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'3', 'subNum'=>'4'],
@@ -132,19 +96,19 @@ return [
         ],
         '4' => [
             '1' => [
-                'name' => 'Registration Guidelines',
+                'name' => '사전등록안내',
                 'url' => "",
                 'route_target' => 'registration.guide',
                 'route_param' => [],
             ],
             '2' => [
-                'name' => 'Go to Register',
+                'name' => '사전등록',
                 'url' => "",
                 'route_target' => 'apply.registration',
                 'route_param' => ['step'=>'1'],
             ],
             '3' => [
-                'name' => 'Registration Confirmation and Receipt',
+                'name' => '사전등록 확인 및 영수증',
                 'url' => "",
                 'route_target' => 'registration.search',
                 'route_param' => [],
@@ -152,47 +116,103 @@ return [
         ],
         '5' => [
             '1' => [
-                'name' => 'Venue',
+                'name' => '강의원고 접수 안내',
                 'url' => "",
-                'route_target' => 'location.venue',
+                'route_target' => 'registration.guide',
                 'route_param' => [],
             ],
             '2' => [
-                'name' => 'Map & Transportation',
+                'name' => '강의원고 접수',
                 'url' => "",
-                'route_target' => 'ready',
-                'route_param' => ['mainNum'=>'5', 'subNum'=>'2'],
+                'route_target' => 'apply.lecture',
+                'route_param' => [],
             ],
             '3' => [
-                'name' => 'Accommodation',
+                'name' => '강의원고 수정 및 확인',
                 'url' => "",
-                'route_target' => 'ready',
-                'route_param' => ['mainNum'=>'5', 'subNum'=>'3'],
+                'route_target' => 'lecture.search',
+                'route_param' => [],
             ],
         ],
         '6' => [            
             '1' => [
-                'name' => 'Sponsors Guidelines',
+                'name' => '워크숍 등록 안내',
                 'url' => "",
                 'route_target' => 'ready',
                 'route_param' => ['mainNum'=>'6', 'subNum'=>'1'],
+            ],
+            '2' => [
+                'name' => '워크숍 신청',
+                'url' => "",
+                'route_target' => 'ready',
+                'route_param' => ['mainNum'=>'6', 'subNum'=>'2'],
+            ]
+        ],
+        '7' => [            
+            '1' => [
+                'name' => '오시는길',
+                'url' => "",
+                'route_target' => 'ready',
+                'route_param' => ['mainNum'=>'7', 'subNum'=>'1'],
+            ],
+            '2' => [
+                'name' => '부스배치도',
+                'url' => "",
+                'route_target' => 'ready',
+                'route_param' => ['mainNum'=>'7', 'subNum'=>'2'],
+            ],
+            '3' => [
+                'name' => '학회장보기',
+                'url' => "",
+                'route_target' => 'ready',
+                'route_param' => ['mainNum'=>'7', 'subNum'=>'3'],
+            ],
+            '4' => [
+                'name' => '부스배치도',
+                'url' => "",
+                'route_target' => 'ready',
+                'route_param' => ['mainNum'=>'7', 'subNum'=>'4'],
             ]
         ]
     ],
     
     'admin_menu' => [
         '1' => [
-            'name' => 'Registration',
+            'name' => '관리자계정',
             'url' => "",
-            'route_target' => 'admin.registration.list',
+            'route_target' => 'admin.member',
             'route_param' => [],
         ],
         '2' => [
-            'name' => 'Abstract',
+            'name' => '등록관리',
             'url' => "",
             'route_target' => 'admin.registration.list',
+            'route_param' => ['tabMode'=>'E'],
+        ],
+        '3' => [
+            'name' => '강의원고',
+            'url' => "",
+            'route_target' => 'admin.lecture.list',
             'route_param' => [],
         ],
+        '4' => [
+            'name' => '초록관리',
+            'url' => "",
+            'route_target' => 'admin',
+            'route_param' => [],
+        ],
+        '5' => [
+            'name' => '초록심사',
+            'url' => "",
+            'route_target' => 'admin',
+            'route_param' => [],
+        ],
+        '6' => [
+            'name' => '워크샵신청',
+            'url' => "",
+            'route_target' => 'admin',
+            'route_param' => [],
+        ]
     ],
 ]
 

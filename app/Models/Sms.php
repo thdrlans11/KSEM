@@ -15,11 +15,11 @@ class Sms extends Model
     
     public $timestamps = false;
 
-    protected $dates = [
-        'signdate',
-        'sendtime',
-        'changeime',
-        'reserve_date',
+    protected $casts = [
+        'signdate' => 'datetime',
+        'sendtime' => 'datetime',
+        'changeime' => 'datetime',
+        'reserve_date' => 'datetime'
     ];
 
     public function setBodyAttribute($value)

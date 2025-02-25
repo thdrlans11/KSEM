@@ -415,6 +415,11 @@ body.ovh{
     border-color: #2b2e3a;
     color: #fff;
 }
+.btn.color-type11{
+    background-color: #e88f26;
+    border-color: #e88f26;
+    color: #fff;
+}
 .btn-line.color-type1{
     background-color: #fff;
     border-color: #a0a5b0;
@@ -619,9 +624,6 @@ textarea.form-item {
     width: 100%;
     border-bottom: 1px solid #e2e2e2;
     table-layout: fixed;
-}
-.write-wrap li.n2 .form-tit {
-    text-align: center;
 }
 .write-wrap li.n2 .form-con {
     width: 30%;
@@ -1260,9 +1262,6 @@ textarea.form-item {
     .write-wrap li.n2 {
         float: none;
         width: 100%;
-    }
-    .write-wrap li.n2 .form-tit {
-        text-align: left;
     }
     .write-wrap li.n2 .form-con {
         width: 100%;

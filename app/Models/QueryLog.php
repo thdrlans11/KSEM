@@ -19,9 +19,4 @@ class QueryLog extends Model
         'query' => 'array',
         'content' => 'object'
     ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
 }

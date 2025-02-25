@@ -22,90 +22,78 @@ class MailService extends dbService
 
     public function makeMail($data, $kind, $mode = null, $judgeGubun = null)
     {
-        $this->sender_name = config('site.common.info.siteName');
+        $this->sender_name = config('site.common.info.simpleName');
         $this->sender_email = config('site.common.info.email');
 
         switch($kind){
-            case 'applyComplete' :
-                $this->receiver_name = $data->name_kr;
-                if( $_SERVER['REMOTE_ADDR'] == "218.235.94.223" ){
-                    $this->receiver_email = 'km@m2community.co.kr';     
-                }else{
-                    $this->receiver_email = $data->email;     
-                }
-                $this->subject = '['.config('site.common.info.siteName').'] 급성 뇌졸중 인증의 접수가 완료되었습니다.';        
-                $this->body = view('templetes.applyMail', ['apply'=>$data, 'kind'=>$kind])->render();
-                break;
-            case 'applyPayComplete' :
-                $this->receiver_name = $data->name_kr;
-                $this->receiver_email = $data->email;     
-                $this->subject = '['.config('site.common.info.siteName').'] 급성 뇌졸중 인증의 접수 비용 결제가 완료되었습니다.';        
-                $this->body = view('templetes.applyMail', ['apply'=>$data, 'kind'=>$kind])->render();
-                break;  
-            case 'applyRefund' :
-                $this->receiver_name = $data->name_kr;
-                $this->receiver_email = $data->email;     
-                $this->subject = '['.config('site.common.info.siteName').'] 급성 뇌졸중 인증의 접수가 취소되었습니다.';        
-                $this->body = view('templetes.applyRefundMail', ['apply'=>$data, 'mode'=>'ing'])->render();
-                break;      
-            case 'applyRefundCom' :
-                $this->receiver_name = $data->name_kr;
-                $this->receiver_email = $data->email;     
-                $this->subject = '['.config('site.common.info.siteName').'] 급성 뇌졸중 인증의 응시료 환불이 완료되었습니다.';        
-                $this->body = view('templetes.applyRefundMail', ['apply'=>$data, 'mode'=>'com'])->render();
-                break;
-            case 'appointmentMail' :
+            case 'registrationComplete' :
                 $this->receiver_name = $data->name;
-                $this->receiver_email = $data->email ?? $data->user->email;     
-                $this->subject = '['.config('site.common.info.siteName').'] 급성뇌졸중인증의 자격 심사 의뢰';        
-                
-                if( $mode == 'preview' ){
-                    return view('templetes.appointmentMail', ['appointment'=>$data, 'judgeGubun'=>$judgeGubun])->render();
-                }
+                $this->receiver_email = $data->email;
+                $this->subject = '['.config('site.common.info.simpleName').'] 춘계학술대회 사전등록이 완료되었습니다.';        
 
-                $this->body = view('templetes.appointmentMail', ['appointment'=>$data, 'judgeGubun'=>$judgeGubun])->render();
-                break;        
+                if( $mode == 'preview' ){
+                    return view('templetes.mailRegistration', ['apply'=>$data, 'kind'=>$kind])->render();
+                }
+                
+                $this->body = view('templetes.mailRegistration', ['apply'=>$data, 'kind'=>$kind])->render();
+            break;       
         }
 
         $this->wiseuSend($this);
         
-        if( $kind == 'applyRefund' || $kind == 'applyRefundCom' ){
-            $this->receiver_name = config('site.common.info')['name'];
-            $this->receiver_email = config('site.common.info')['email2'];
+        //사무국
+        if( config('site.common.default.adminReceive') ){
+            $this->receiver_name = config('site.common.info.siteName');
+            $this->receiver_email = config('site.common.info.email');
+            $this->wiseuSend($this);
+        }
+
+        //기획자
+        if( config('site.common.default.mailReceive') ){
+            $this->receiver_name = config('site.common.info.siteName');
+            $this->receiver_email = config('site.common.info.email2');
             $this->wiseuSend($this);
         }
     }
 
     private function wiseuSend($mailData)
     {   
+        $wiseUconnection = wiseuConnection();
+
         $now = Carbon::now();
         $seq = $now->timestamp . $now->micro;
 
-        $NVREALTIMEACCEPT = [
-            'ECARE_NO' => config('site.common.info.ecareNum'),
-            'RECEIVER_ID' => $seq,
-            'CHANNEL' => 'M',
-            'SEQ' => $seq,
-            'REQ_DT' => $now->format('Ymd'),
-            'REQ_TM' => $now->format('His'),
-            'TMPL_TYPE' => 'T',
-            'RECEIVER_NM' => $mailData->receiver_name,
-            'RECEIVER' => $mailData->receiver_email,
-            'SENDER_NM' => $mailData->sender_name,
-            'SENDER' => $mailData->sender_email,
-            'SUBJECT' => $mailData->subject,
-            'SEND_FG' => 'R',
-            'DATA_CNT' => 1,
-        ];
+        $stmt = $wiseUconnection->prepare("INSERT INTO NVREALTIMEACCEPT 
+                    (ECARE_NO, RECEIVER_ID, CHANNEL, SEQ, REQ_DT, REQ_TM, TMPL_TYPE, RECEIVER_NM, RECEIVER, SENDER_NM, SENDER, SUBJECT, SEND_FG, DATA_CNT) 
+                    VALUES (:ECARE_NO, :RECEIVER_ID, :CHANNEL, :SEQ, :REQ_DT, :REQ_TM, :TMPL_TYPE, :RECEIVER_NM, :RECEIVER, :SENDER_NM, :SENDER, :SUBJECT, :SEND_FG, :DATA_CNT)");
 
-        $NVREALTIMEACCEPTDATA = [
+        $stmt->execute([
+            ':ECARE_NO' => config('site.common.info.ecareNum'),
+            ':RECEIVER_ID' => $seq,
+            ':CHANNEL' => 'M',
+            ':SEQ' => $seq,
+            ':REQ_DT' => $now->format('Ymd'),
+            ':REQ_TM' => $now->format('His'),
+            ':TMPL_TYPE' => 'T',
+            ':RECEIVER_NM' => $mailData->receiver_name,
+            ':RECEIVER' => $mailData->receiver_email,
+            ':SENDER_NM' => $mailData->sender_name,
+            ':SENDER' => $mailData->sender_email,
+            ':SUBJECT' => $mailData->subject,
+            ':SEND_FG' => 'R',
+            ':DATA_CNT' => 1,
+        ]);
+
+        $stmt = $wiseUconnection->prepare("INSERT INTO NVREALTIMEACCEPTDATA (SEQ, DATA_SEQ, ATTACH_YN, DATA) VALUES (:SEQ, :DATA_SEQ, :ATTACH_YN, :DATA)");
+
+        $stmt->execute([
             'SEQ' => $seq,
             'DATA_SEQ' => 1,
             'ATTACH_YN' => 'N',
             'DATA' => $mailData->body,
-        ];
+        ]);
         
-        DB::connection('wiseu')->table('NVREALTIMEACCEPT')->insert($NVREALTIMEACCEPT);
-        DB::connection('wiseu')->table('NVREALTIMEACCEPTDATA')->insert($NVREALTIMEACCEPTDATA);
+        // DB::connection('wiseu')->table('NVREALTIMEACCEPT')->insert($NVREALTIMEACCEPT);
+        // DB::connection('wiseu')->table('NVREALTIMEACCEPTDATA')->insert($NVREALTIMEACCEPTDATA);
     }
 }

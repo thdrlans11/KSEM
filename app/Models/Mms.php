@@ -15,12 +15,12 @@ class Mms extends Model
 
     public $timestamps = false;
 
-    protected $dates = [
-        'REQDATE',
-        'SENTDATE',
-        'RSLTDATE',
-        'REPORTDATE',
-        'TERMINATEDDATE',
+    protected $casts = [
+        'REQDATE' => 'datetime',
+        'SENTDATE' => 'datetime',
+        'RSLTDATE' => 'datetime',
+        'REPORTDATE' => 'datetime',
+        'TERMINATEDDATE' => 'datetime'
     ];
 
     public function setMsgAttribute($value)

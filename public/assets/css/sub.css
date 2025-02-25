@@ -111,17 +111,15 @@
 }
 
 /* 서브::TAP MENU */
-.sub-tab-wrap{
-    margin-bottom: 40px;
-    text-align: center;
-}
 .sub-tab-menu{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 40px;
     border: 1px solid #d1deed;
     border-radius: 50px;
+    text-align: center;
 }
 .sub-tab-menu > li{
     flex: 1;
@@ -426,6 +424,7 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+    margin-bottom: 40px;
 }
 .room-tab-menu > li{
     width: 25%;
@@ -440,6 +439,7 @@
     align-items: center;
     height: 53px;
     font-size: 1.8rem;
+    text-align: center;
     transition: 0.3s ease;
 }
 .room-tab-menu > li.on > a,
@@ -685,8 +685,15 @@
     font-size: 3.4rem;
     line-height: 1.2;
 }
+.resi-success .des{
+    font-size: 1.7rem;
+    font-weight: 500;
+}
 .resi-success strong {
     color: #284f98;
+}
+.resi-success .list-type {
+    margin-top: 20px;
 }
 
 /* 사전등록::확인 */
@@ -932,9 +939,64 @@
     vertical-align: middle;
 }
 
+.step-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    margin-bottom: 40px;
+    background-color: #f6fafd;
+}
+.step-list > li{
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #81a5bb;
+}
+.step-list > li p {
+    font-weight: 700;
+    color: #81a5bb;
+}
+.step-list > li.on {
+    color: #191949;
+}
+.step-list > li.on p {
+    color: #3e85ae;
+}
+
 /* 현장등록::현장등록 */
 .noti-text.bg-grey {
     padding: 40px;
     margin-bottom: 0;
     background-color: #fafafa;
+}
+
+/* 워크샵::*/
+.workshop-conbox .regi-date-wrap {
+    background-color: #fffbf6;
+}
+.workshop-conbox .notice-tit {
+    color: #e88f26;
+}
+.workshop-conbox .notice-tit span {
+    box-shadow: inset 0 -10px 0 #fffbf6;
+}
+
+.workshop-tit {
+    padding: 20px;
+    border-top: 2px solid #0397cf;
+    border-bottom: 1px solid #cfdfe5;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    color: #058ecf;
+}
+.workshop-conbox form {
+    margin-top: 50px;
 }

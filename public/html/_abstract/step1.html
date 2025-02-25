@@ -52,65 +52,101 @@ include $_SERVER['DOCUMENT_ROOT'].'/include/header.inc';
             <form action="" method="">
                 <fieldset>
                     <legend class="hide">초록접수</legend>
-                    <div class="write-wrap">
-                        <ul>
-                            <li>
-                                <div class="form-tit">종류 <strong class="required">*</strong></div>
-                                <div class="form-con">
-                                    <input type="text" name="" id="" class="form-item">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-tit">분야 <strong class="required">*</strong></div>
-                                <div class="form-con">
-                                    <input type="text" name="" id="" class="form-item">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-tit">발표자 성명 <strong class="required">*</strong></div>
-                                <div class="form-con">
-                                    <input type="text" name="" id="" class="form-item">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-tit">비밀번호 <strong class="required">*</strong></div>
-                                <div class="form-con">
-                                    <input type="password" name="" id="" class="form-item">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-tit">발표자 이메일  <strong class="required">*</strong></div>
-                                <div class="form-con">
-                                    <input type="text" name="" id="" class="form-item">
-                                </div>
-                            </li>
-                        </ul>
-                        <p class="help-text text-red mt-10">* 발표자 성명, 비밀번호, 발표자 이메일 정보는 초록접수 확인 시 필요한 정보이므로 정확하게 기재해주세요.</p>
-                    </div>
+                    <div class="m-hide">
+                        <div class="step-list-wrap">
+                            <ul class="step-list">
+                                <li class="on">
+                                    <p>Step 01</p> 
+                                    <span>초록분야 선택</span>
+                                </li>
+                                <li>
+                                    <p>Step 02</p> 
+                                    <span>초록분야 입력</span>
+                                </li>
+                                <li>
+                                    <p>Step 03</p> 
+                                    <span>초록분야 미리보기</span>
+                                </li>
+                                <li>
+                                    <p>Step 01</p> 
+                                    <span>초록분야 완료</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                    <div class="sub-tit-wrap">
-                        <h4 class="sub-tit">Preventing Automation Program Entry</h4>
-                    </div>
-                    <div class="write-wrap">
-                        <ul>
-                            <li>
-                                <div class="form-con">
-                                    <div class="captcha">
-                                        <span class="img"><img id="captcha_img" src="/assets/image/sub/captcha.png"></span>
-                                        <img src="/assets/image/sub/ic_refresh.png" class="refresh" onclick="refresh_captcha();return false;">
-                                        <input type="text" name="captcha" id="captcha" class="form-item">
+                        <div class="write-wrap">
+                            <ul>
+                                <li>
+                                    <div class="form-tit">종류 <strong class="required">*</strong></div>
+                                    <div class="form-con">
+                                        <input type="text" name="" id="" class="form-item">
                                     </div>
-                                    <p class="help-text mt-10 text-blue">
-                                        * For information security, you can register as a member after entering the text written below.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-tit">분야 <strong class="required">*</strong></div>
+                                    <div class="form-con">
+                                        <input type="text" name="" id="" class="form-item">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-tit">발표자 성명 <strong class="required">*</strong></div>
+                                    <div class="form-con">
+                                        <input type="text" name="" id="" class="form-item">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-tit">비밀번호 <strong class="required">*</strong></div>
+                                    <div class="form-con">
+                                        <input type="password" name="" id="" class="form-item">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-tit">발표자 이메일  <strong class="required">*</strong></div>
+                                    <div class="form-con">
+                                        <input type="text" name="" id="" class="form-item">
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="help-text text-red mt-10">* 발표자 성명, 비밀번호, 발표자 이메일 정보는 초록접수 확인 시 필요한 정보이므로 정확하게 기재해주세요.</p>
+                        </div>
+                        <div class="sub-tit-wrap">
+                            <h4 class="sub-tit">Preventing Automation Program Entry</h4>
+                        </div>
+                        <div class="write-wrap">
+                            <ul>
+                                <li>
+                                    <div class="form-con">
+                                        <div class="captcha">
+                                            <span class="img"><img id="captcha_img" src="/assets/image/sub/captcha.png"></span>
+                                            <img src="/assets/image/sub/ic_refresh.png" class="refresh" onclick="refresh_captcha();return false;">
+                                            <input type="text" name="captcha" id="captcha" class="form-item">
+                                        </div>
+                                        <p class="help-text mt-10 text-blue">
+                                            * For information security, you can register as a member after entering the text written below.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                    <div class="btn-wrap text-center">
-                        <a href="./guide.html" class="btn btn-type1 color-type1">이전</a>
-                        <button type="submit" class="btn btn-type1 color-type2">다음</button>
+                        <div class="btn-wrap text-center">
+                            <a href="./guide.html" class="btn btn-type1 color-type1">이전</a>
+                            <button type="submit" class="btn btn-type1 color-type2">다음</button>
+                        </div>
+
+                    </div>
+                    <div class="m-show">
+                        <div class="regi-date-wrap">
+                            <img src="/assets/image/sub/img_regi_date.png" alt="">
+                            <div class="text-wrap">
+                                <p class="tit">초록접수 마감일: <strong class="text-pink">2025년 3월 31일(금)</strong></p>
+                                <p>제출 마감기간에는 학술대회 사이트 접속이 원활하지 않을 수 있으니 빠른 제출 부탁드립니다.</p>
+                            </div>
+                        </div>
+                        <div class="onlypc-wrap m-show">
+                            <img src="/assets/image/sub/img_onlypc.png" alt="">
+                            <p>초록접수는 PC에서만 가능합니다.</p>
+                        </div>
                     </div>
                 </fieldset>
             </form>

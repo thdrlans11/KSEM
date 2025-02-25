@@ -40,7 +40,7 @@ class dbService
         DB::commit();
 
         QueryLog::create([
-            'u_sid' => auth('web')->user()->sid,
+            'u_sid' => auth('admin')->check() ? auth('admin')->user()->sid : null,
             'subject' => $subject,
             'query' => $this->getQuery(),
             'ip' => request()->ip(),
@@ -61,7 +61,7 @@ class dbService
         ];
 
         QueryLog::create([
-            'u_sid' => auth('web')->user()->sid,
+            'u_sid' => auth('admin')->check() ? auth('admin')->user()->sid : null,
             'subject' => 'DB RollBack',
             'content' => $errorInfo,
             'query' => $this->getQuery(),
@@ -71,7 +71,7 @@ class dbService
         if( $mode == 'ajax' ){
             return 'error';
         }else{
-            return redirect()->back()->with('alert','시스템 오류가 있습니다. 관리자에 문의해주세요.');
+            return redirect()->back()->withError('시스템 오류가 있습니다. 관리자에 문의해주세요.');
         }
     }
 }

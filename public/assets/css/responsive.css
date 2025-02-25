@@ -218,6 +218,19 @@
         font-size: 17px;
     }
 
+    /* 서브::온리피시 */
+    .onlypc-wrap {
+        margin-top: 60px;
+        text-align: center;
+    }
+    .onlypc-wrap img {
+        max-width: 189px;
+    }
+    .onlypc-wrap p {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
     /* 서브::visual */
     .wrap.sub .header-wrap{
         padding: 0;
@@ -334,10 +347,10 @@
 
     /* 서브::TAP MENU */
     .sub-tab-wrap{
-        margin-bottom: 20px;
     }
     .sub-tab-menu{
         display: flex;
+        margin-bottom: 20px;
         border-radius: 5px;
     }
     .sub-tab-menu > li{
@@ -358,7 +371,9 @@
         margin-bottom: 20px;
     }
     .page-tit {
+        padding-left: 30px;
         font-size: 20px;
+        background-size: 20px auto;
     }
     .sub-tit-wrap{
         margin-top: 30px;
@@ -452,6 +467,7 @@
     .room-tab-menu{
         flex-wrap: wrap;
         gap: 10px;
+        margin-bottom: 20px;
     }
     .room-tab-menu > li{
         width: calc(50% - 5px);
@@ -611,5 +627,14 @@
         padding: 20px;
         margin-bottom: 0;
         background-color: #fafafa;
+    }
+
+    /* 워크샵::*/
+    .workshop-tit {
+        padding: 10px;
+        font-size: 16px;
+    }
+    .workshop-conbox form {
+        margin-top: 20px;
     }
 }  

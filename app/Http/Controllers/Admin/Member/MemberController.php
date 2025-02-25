@@ -21,14 +21,23 @@ class MemberController extends Controller
         return view('admin.member.list')->with( $this->MemberService->list($request) );
     }
 
+    public function form(Request $request)
+    {
+        return view('admin.member.form')->with( $this->MemberService->form($request) );
+    }
+
+    public function upsert(Request $request)
+    {
+        return $this->MemberService->upsert($request);
+    }
+
+    public function idCheck(Request $request)
+    {
+        return $this->MemberService->idCheck($request);
+    }
+
     public function dbChange(Request $request)
     {
         return $this->MemberService->dbChange($request);
-    }
-
-    public function excel(Request $request)
-    {
-        $request->merge(['excel' => true]);
-        return $this->MemberService->list($request);
     }
 }

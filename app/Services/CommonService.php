@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Models\BoardFile;
+use App\Models\Lecture;
+use App\Models\Registration;
+use App\Models\SpecialSymposium;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -43,21 +46,23 @@ class CommonService
     {
         $tbl = $request->tbl;
         $sid = $request->sid;
-
+        
         switch ($tbl) {
-            case 'boardFile':
-                $boardFile = BoardFile::findOrFail(base64_decode($sid));
-                $boardFile->increment('download');
-
-                $data = ['realfile' => $boardFile->realfile, 'filename' => $boardFile->filename];
+            case 'lectures':
+                $lecture = Lecture::findOrFail(decrypt($sid));
+                switch( $request->kind ){
+                    case 'realfile' : $data = ['realfile' => $lecture->realfile, 'filename' => $lecture->filename]; break;
+                    case 'realfile2' : $data = ['realfile' => $lecture->realfile2, 'filename' => $lecture->filename2]; break;
+                    case 'realfile3' : $data = ['realfile' => $lecture->realfile3, 'filename' => $lecture->filename3]; break;
+                }
                 break;
             default:
-                return redirect()->back()->with('alert','잘못된 접근입니다.');
+                return redirect()->back()->withError('잘못된 접근입니다.');
         }
 
         return (File::exists(public_path($data['realfile'])))
             ? response()->download(public_path($data['realfile']), $data['filename'])
-            : redirect()->back()->with('alert','파일을 찾을 수 없습니다.');; // 파일 데이터가 없을경우
+            : redirect()->back()->withError('파일을 찾을 수 없습니다.');; // 파일 데이터가 없을경우
     }
 
     // public function zipDownloadService(Request $request)
@@ -136,4 +141,61 @@ class CommonService
 
     //     return $zipFile;
     // }
+
+    public function captchaMakeService()
+    {
+        // 기존 캡차 지우기
+        session()->forget('captcha');
+
+        // 이미지 크기
+        $img = imagecreate(115, 40);
+
+        // 캡챠 폰트 크기
+        $size = 25;
+
+        // 캡챠 폰트 기울기
+        $angle = 0;
+
+        // 캡챠 폰트 x, y위치
+        $x = 10;
+        $y = 30;
+
+        // 이미지의 바탕화면은 흰색
+        $background = imagefill($img, 0, 0, imagecolorallocatealpha($img, 255, 255, 255, 100));
+
+        // 폰트 색상
+        $text_color = imagecolorallocate($img, 233, 14, 91);
+
+        // 폰트 위치
+        $font = public_path('devCss/captcha/fonts/Roboto-Black.ttf');
+
+        // 캡챠 텍스트
+        $captchaStr = substr(md5(rand(1, 10000)), 0, 5);
+
+        // 생성된 캡챠 문자열을 세션에 저장
+        session()->put('captcha', $captchaStr);
+
+        // 글자를 이미지로 만들기
+        imagettftext($img, $size, $angle, $x, $y, $text_color, $font, $captchaStr);
+
+        // 이미지를 base64로 인코딩
+        ob_start();
+        imagejpeg($img);
+        $imageData = ob_get_clean();
+        $base64Image = base64_encode($imageData);
+
+        // 이미지 생성 후 리턴
+        return 'data:image/jpeg;base64,' . $base64Image;
+    }
+
+    public function captchaCheckService(Request $request)
+    {
+        if ( $request->captcha === session('captcha')) {
+            // 기존 캡차 지우기
+            session()->forget('captcha');
+            return 'suc';
+        }else{
+            return 'fail';
+        }
+    }
 }

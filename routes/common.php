@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // 메인 페이지
 Route::controller(\App\Http\Controllers\MainController::class)->group(function() {
     Route::get('/', 'main')->name('main');
-    Route::get('/popup/{sid}', 'popup')->name('main.popup');
+    Route::get('/ready', 'ready')->name('ready');
 });;
 
 // 관리자 페이지
@@ -18,8 +18,14 @@ Route::controller(\App\Http\Controllers\Admin\MainController::class)->group(func
     Route::get('/admin', 'main')->name('admin');
 });
 
+// 로그인
+Route::middleware('guest')->prefix('auth')->controller(\App\Http\Controllers\Admin\AuthController::class)->group(function() {
+    Route::get('/', 'loginShow')->name('loginShow');
+    Route::post('/', 'loginProcess')->name('loginProcess');
+});
+
 // 로그아웃
-Route::middleware('auth')->controller(\App\Http\Controllers\Member\LoginController::class)->group(function() {
+Route::middleware('auth:admin')->prefix('auth')->controller(\App\Http\Controllers\Admin\AuthController::class)->group(function() {
     Route::get('logout', 'logoutProcess')->name('logoutProcess');
 });
 
@@ -33,6 +39,9 @@ Route::controller(\App\Http\Controllers\Controller::class)->prefix('common')->gr
     Route::get('fileDownload/{type}/{tbl}/{sid}', 'fileDownload')->where('type', 'only|zip')->name("download");
     Route::post('/tinyUpload', 'tinyUpload')->name("tinyUpload");
     Route::post('/plUpload', 'plUpload')->name("plUpload");
+
+    Route::post('captcha-make', 'captchaMake')->name("captcha.make");
+    Route::post('captcha-check', 'captchaCheck')->name("captcha.check");
 });
 
 ?>

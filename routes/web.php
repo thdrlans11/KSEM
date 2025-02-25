@@ -13,22 +13,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// 로그인
-Route::middleware('guest')->prefix('member')->controller(\App\Http\Controllers\Member\LoginController::class)->group(function() {
-    Route::get('login', 'loginShow')->name('loginShow');
-    Route::post('login', 'loginProcess')->name('loginProcess');
+//인사말
+Route::prefix('greeting')->controller(\App\Http\Controllers\Greeting\GreetingController::class)->group(function() {
+    Route::get('', 'message')->name('greeting.message');
 });
 
-//공지사항
-Route::prefix('board/{code}')->middleware('boardCheck')->controller(\App\Http\Controllers\Board\BoardController::class)->group(function() {
-    Route::get('', 'list')->name('board.list');
-    Route::get('calendar', 'calendar')->name('board.calendar');
-    Route::get('form/{sid?}', 'form')->name('board.form');     
-    Route::post('upsert/{sid?}', 'upsert')->name('board.upsert');
-    Route::get('view/{sid}', 'view')->name('board.view');
-    Route::get('delete/{sid}', 'delete')->name('board.delete');
-    Route::post('dbChange', 'dbChange')->name('board.dbChange');
-    Route::post('preview', 'popupPreview')->name('board.popupPreview');
+//사전등록
+Route::prefix('registration')->controller(\App\Http\Controllers\Registration\RegistrationController::class)->group(function() {
+    Route::get('/guide', 'guide')->name('registration.guide');  
+    Route::middleware('noCash')->group(function(){
+        Route::get('registration/{step}', 'registration')->where('step', '1|2|3')->name('apply.registration');
+        Route::post('emailCheck', 'emailCheck')->name('apply.registration.emailCheck');
+        Route::post('phoneCheck', 'phoneCheck')->name('apply.registration.phoneCheck');
+        Route::post('makePrice', 'makePrice')->name('apply.registration.makePrice');
+        Route::post('makeLocalSub', 'makeLocalSub')->name('apply.registration.makeLocalSub');
+        Route::post('upsert/{step}', 'upsert')->where('step', '1|2')->name('apply.registration.upsert');
+        Route::post('payRegist', 'payRegist')->name('apply.registration.payRegist');
+        
+    });
+
+    //Route::get('payCancel', 'payCancel')->name('apply.registration.payCancel');
+
+    Route::post('paySuccess', 'paySuccess')->name('apply.registration.paySuccess');
+    Route::post('payFail', 'payFail')->name('apply.registration.payFail');
+
+    Route::get('search', 'search')->name('registration.search');
+    Route::post('search', 'searchResult')->name('registration.searchResult');
 });
+
+//원고등록
+Route::prefix('lecture')->controller(\App\Http\Controllers\Lecture\LectureController::class)->group(function() {
+    Route::get('/guide', 'guide')->name('lecture.guide');  
+    Route::middleware('noCash')->group(function(){
+        Route::get('registration', 'registration')->name('apply.lecture');
+        Route::post('emailCheck', 'emailCheck')->name('apply.lecture.emailCheck');
+        Route::post('upsert', 'upsert')->name('apply.lecture.upsert');
+        
+    });
+    Route::get('search', 'search')->name('lecture.search');
+    Route::post('search', 'searchResult')->name('lecture.searchResult');
+});
+
+
 
 require __DIR__.'/common.php';

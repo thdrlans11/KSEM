@@ -30,4 +30,14 @@ class Controller extends BaseController
             ? (new CommonService())->fileDownloadService($request)
             : (new CommonService())->zipDownloadService($request);
     }
+
+    public function captchaMake(Request $request)
+    {
+        return (new CommonService())->captchaMakeService($request);
+    }
+
+    public function captchaCheck(Request $request)
+    {
+        return (new CommonService())->captchaCheckService($request);
+    }
 }
