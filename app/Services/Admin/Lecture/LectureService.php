@@ -2,9 +2,12 @@
 
 namespace App\Services\Admin\Lecture;
 
+use App\Models\Hospital;
 use App\Models\Lecture;
 use App\Models\LecturePeriod;
+use App\Services\CommonService;
 use App\Services\dbService;
+use App\Services\Util\ExcelService;
 use Illuminate\Http\Request;
 
 /**
@@ -56,40 +59,12 @@ class LectureService extends dbService
     
     public function modifyForm(Request $request)
     {
-        $registration = Registration::find(decrypt($request->sid));
-
-        $data['step'] = $request->step;
-        $data['type'] = $registration->type;        
-        $data['country'] = (new Country())->countryList('KOR');
+        $lecture = Lecture::find(decrypt($request->sid));
+        $data['hospitals'] = Hospital::orderby('hospital')->get();
         $data['captcha'] = (new CommonService())->captchaMakeService();
-        $data['apply'] = $registration;
-        $data['rgubun'] = $registration->ccode == 'KR' ? 'KOR' : null;
+        $data['apply'] = $lecture;
 
         return $data;
-    }
-
-    public function sendMailForm(Request $request)
-    {
-        $registration = Registration::find(decrypt($request->sid));
-        $mailBody = (new MailService())->makeMail($registration, 'registrationComplete', 'preview');
-
-        $data['apply'] = $registration;
-        $data['mailBody'] = $mailBody;
-
-        return $data;
-    }
-
-    public function sendMail(Request $request)
-    {
-        $registration = Registration::find(decrypt($request->sid));
-
-        if( $request->email ){
-            $registration->email = $request->email;
-        }
-
-        (new MailService())->makeMail($registration, 'registrationComplete');
-
-        return redirect()->back()->withSuccess('메일 전송이 완료되었습니다.')->with('close','Y');
     }
 
     public function dbChange(Request $request)
@@ -121,21 +96,8 @@ class LectureService extends dbService
                     
                 }else{
                     $lecture[$request->field] = $request->value;
-
-                    if( $request->field == 'payStatus' ){
-                        if( $request->value != 'N' ){
-                            $lecture->payComplete_at = now();
-                            //(new MailService())->makeMail($lecture, 'applyPayComplete');
-                        }else{
-                            $lecture->payComplete_at = null;
-                        }
-
-                        $msg = '관리자 결제상태 변경';
-                    }else if( $request->field == 'payMethod' ){
-                        $msg = '관리자 결제방법 변경';
-                    }
-
                     $lecture->save();
+                    $msg = '관리자 강의원고 변경';
                 }
 
             }               
@@ -153,8 +115,8 @@ class LectureService extends dbService
 
     public function memoForm(Request $request)
     {
-        $registration = Registration::find(decrypt($request->sid));
-        $data['apply'] = $registration;
+        $lecture = Lecture::find(decrypt($request->sid));
+        $data['apply'] = $lecture;
 
         return $data;
     }    
@@ -165,11 +127,11 @@ class LectureService extends dbService
 
         try {
 
-            $registration = Registration::find(decrypt($request->sid));
-            $registration->memo = $request->memo;
-            $registration->save();
+            $lecture = Lecture::find(decrypt($request->sid));
+            $lecture->memo = $request->memo;
+            $lecture->save();
 
-            $this->dbCommit('사전등록 메모 변경'); 
+            $this->dbCommit('강의원고 메모 변경'); 
             
             return redirect()->back()->withSuccess('메모 저장이 완료되었습니다.')->with('close','Y');
 

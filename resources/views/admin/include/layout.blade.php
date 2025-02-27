@@ -49,9 +49,23 @@
             </div>
             <nav id="gnb" class="wide">
                 <div class="gnb-wrap inner-layer wide">
-                    <ul class="gnb">
+                    <ul class="gnb js-gnb">
                     	@foreach( config('site.menu.admin_menu') as $key => $val )
-                        <li><a href="{{ route($val['route_target'], $val['route_param']) }}">{{ $val['name'] }}</a></li>
+                        <li>
+                            <a href="{{ route($val['route_target'], $val['route_param']) }}">{{ $val['name'] }}</a>
+
+                            @if( isset( config('site.menu.admin_sub_menu')[$key] ) )
+                            <ul>
+                                @foreach( config('site.menu.admin_sub_menu')[$key] as $skey => $sval )
+                                <li>
+                                    <a href="{{ route($sval['route_target'],$sval['route_param']) }}">
+                                        {{ $sval['name'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
                         @endforeach
                     </ul>
                 </div>

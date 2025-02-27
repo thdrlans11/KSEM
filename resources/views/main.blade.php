@@ -84,16 +84,16 @@
             <div class="col2">
                 <div>
                     <p class="title">온라인 사전등록</p>
-                    <p class="date">2025-02-01 ~ 2025-03-31</p>
+                    <p class="date">{{ $registrationPeriod->Esdate->toDateString() }} ~ {{ $registrationPeriod->Eedate->toDateString() }}</p>
                 </div>
-                <p class="dday">D - 100</p>
+                <p class="dday">{{ DDay($registrationPeriod->Eedate->toDateString()) }}</p>
             </div>
             <div class="col2">
                 <div>
                     <p class="title">강의원고 등록</p>
-                    <p class="date">2025-02-01 ~ 2025-03-31</p>
+                    <p class="date">{{ $lecturePeriod->sdate->toDateString() }} ~ {{ $lecturePeriod->edate->toDateString() }}</p>
                 </div>
-                <p class="dday">D - 100</p>
+                <p class="dday">{{ DDay($lecturePeriod->edate->toDateString()) }}</p>
             </div>
         </div>
     </div>

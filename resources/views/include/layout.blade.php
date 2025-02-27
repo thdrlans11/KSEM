@@ -48,16 +48,14 @@
                         <div class="dday-wrap">
                             <img src="/assets/image/common/ic_dday.png" alt="">
                             <p class="today">TODAY {{ date('Y.m.d') }}</p>
-                            <p class="dday">{{ DDay('event') }}</p>
+                            <p class="dday">{{ DDay(config('site.common.info.eventDay')) }}</p>
                         </div>
                         <div class="util-menu-wrap m-hide">
                             <ul class="util-menu">
                                 <li><a href="https://emergency.or.kr" target="_blank">대한응급의학회 홈페이지</a></li>
                                 <li><a href="{{ route('main') }}">행사 HOME</a></li>
                                 <li><a href="http://2024f.ksem.kr/index.php" target="_blank">지난 학술대회 바로가기</a></li>
-                                @auth('admin')
                                 <li><a href="{{ route('admin') }}">ADMIN</a></li>
-                                @endauth
                             </ul>
                         </div>
                     </div>
@@ -66,15 +64,13 @@
                             <a href="https://emergency.or.kr" target="_blank" class="btn btn-link">대한응급의학회 홈페이지</a>
                             <div class="util-wrap">
                                 <ul class="util-menu">
-                                    @auth('admin')
                                     <li><a href="{{ route('admin') }}">ADMIN</a></li>
-                                    @endauth
                                 </ul>
                             </div>
                         </div>
                         <div class="gnb-wrap">
                             <ul class="gnb js-gnb">
-                                @foreach( config('site.menu.menu') as $key => $val )
+                                @foreach( config('site.menu.menu') as $key => $val ) @if( $key > 7 ) @continue @endif
                                 <li>
                                     <a href="{{ route($val['route_target'],$val['route_param']) }}">
                                         {{ $val['name'] }}
@@ -116,11 +112,12 @@
                         <li class="sub-menu-depth01">
                             <a href="#n" class="btn-sub-menu js-btn-sub-menu">{{ config('site.menu.menu')[$mainNum]['name'] }}</a>
                             <ul>
-                                @foreach( config('site.menu.menu') as $key => $val )
+                                @foreach( config('site.menu.menu') as $key => $val ) @if( $key > 7 ) @continue @endif
                                 <li><a href="{{ route($val['route_target'],$val['route_param']) }}">{{ $val['name'] }}</a>
                                 @endforeach
                             </ul>
                         </li>
+                        @if( isset( config('site.menu.sub_menu')[$mainNum] ) )
                         <li class="sub-menu-depth02">
                             <a href="#n" class="btn-sub-menu js-btn-sub-menu">{{ config('site.menu.sub_menu')[$mainNum][$subNum]['name'] }}</a>
                             <ul>
@@ -131,14 +128,17 @@
                                 @endforeach
                             </ul>
                         </li>
+                        @endif
                     </ul>
                     <ul class="breadcrumb">
                         <li><img src="/assets/image/sub/img_breadcrumb.png" alt=""></li>
                         <li>HOME</li>
                         <li class="font-suit">&gt;</li>
                         <li>{{ config('site.menu.menu')[$mainNum]['name'] }}</li>
+                        @if( isset( config('site.menu.sub_menu')[$mainNum] ) )
                         <li class="font-suit">&gt;</li>
                         <li>{{ config('site.menu.sub_menu')[$mainNum][$subNum]['name'] }}</li>
+                        @endif
                     </ul>
                 </div>
             </article>
@@ -146,7 +146,7 @@
                 <div class="sub-conbox inner-layer">
         
                     <div class="page-tit-wrap">
-                        <h3 class="page-tit">{{ config('site.menu.sub_menu')[$mainNum][$subNum]['name'] }}</h3>
+                        <h3 class="page-tit">{{ isset($subNum) ? config('site.menu.sub_menu')[$mainNum][$subNum]['name'] : config('site.menu.menu')[$mainNum]['name'] }}</h3>
                     </div>
             @endif
 

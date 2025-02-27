@@ -84,11 +84,11 @@ class LectureService extends dbService
                 $lecture = new Lecture();
                 $lecture->rnum = $this->makeRegistNumber();
                 $lecture->email = $request->email;
+                $lecture->complete_at = now();
             }else{
                 $lecture = Lecture::find(decrypt($request->sid));
             }
 
-            
             $lecture->name = $request->name;
             $lecture->office = $request->office;
             $lecture->phone = $request->phone;
@@ -127,10 +127,10 @@ class LectureService extends dbService
             if( $request->password ){
                 $lecture->password = $request->password;
             }
-            $lecture->complete_at = now();
+            
             $lecture->save();
 
-            $this->dbCommit($msg ?? ( checkUrl() == 'admin' ? '관리자 ' : '사용자' ).' 강의원고 '.$request->sid ? '수정' : '접수');
+            $this->dbCommit($msg ?? ( checkUrl() == 'admin' ? '관리자 ' : '사용자' ).' 강의원고 '.($request->sid ? '수정' : '접수'));
 
             if( checkUrl() == 'admin' ){
                 return redirect()->route('admin.lecture.modifyForm', ['sid'=>encrypt($lecture->sid)]);

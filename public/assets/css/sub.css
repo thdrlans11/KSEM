@@ -292,6 +292,10 @@
 }
 
 /* 프로그램::전체 프로그램 */
+.all-program {
+    max-width: 1500px;
+    margin: 0 auto;
+}
 .sub-tab-menu.program-tab-menu {
     border: 0;
     justify-content: flex-end;
@@ -339,8 +343,9 @@
 }
 
 .program-table td {
-    padding: 15px 10px;
+    padding: 15px 5px;
     font-weight: 400;
+    word-wrap: break-word;
 }
 .program-table td span {
     font-size: 13px;
@@ -352,7 +357,7 @@
 }
 .program-table td:has(.program-tag){
     position: relative;
-    padding: 35px 10px 25px;
+    padding: 35px 5px 25px;
 }
 .program-table .program-tag {
     position: absolute;
@@ -415,6 +420,18 @@
 }
 .program-table th.bg-color6{
     background-color: #a05ed3;
+    color: #fff;
+}
+.program-table th.bg-color7{
+    background-color: #d35e61;
+    color: #fff;
+}
+.program-table th.bg-color8{
+    background-color: #d3875e;
+    color: #fff;
+}
+.program-table th.bg-color9{
+    background-color: #e3c654;
     color: #fff;
 }
 

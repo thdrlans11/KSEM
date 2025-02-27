@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="write-form-wrap">
-    <form id="registrationForm" action="{{ route('admin.registration.memo', ['sid'=>encrypt($apply->sid)]) }}" method="post">
+    <form id="registrationForm" action="{{ route('admin.lecture.memo', ['sid'=>encrypt($apply->sid)]) }}" method="post">
         {{ csrf_field() }}
         <fieldset>
-            <legend class="hide">Memo</legend>
+            <legend class="hide">강의원고 메모</legend>
 
             <div class="sub-tit-wrap">
-                <h4 class="sub-tit">Registration Memo</h4>
+                <h4 class="sub-tit">강의원고 메모</h4>
             </div>
             <ul class="write-wrap">
                 <li>

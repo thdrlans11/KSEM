@@ -27,9 +27,11 @@ $(document).ready(function() {
 
 <div class="sub-tit-wrap mt-0">
     <h4 class="sub-tit">접수정보</h4>
+    @if( checkUrl() != 'admin' )
     <div class="btn-wrap text-right mt-0">
         <a href="{{ route('lecture.search') }}" class="btn btn-type1 color-type9">강의원고 수정 및 확인</a>
     </div>
+    @endif
 </div>
 <div class="write-wrap">
     <ul>

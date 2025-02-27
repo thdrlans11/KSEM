@@ -20,6 +20,26 @@
 
                 @include('registration.form.step0'.$step)
 
+                <div class="sub-tit-wrap">
+                    <h4 class="sub-tit">관리자 입력</h4>
+                </div>
+                <div class="write-wrap">
+                    <ul>
+                        <li>
+                            <div class="form-tit">출력이름 <strong class="required">*</strong></div>
+                            <div class="form-con">
+                                <input type="text" name="printName" id="printName" value="{{ $apply->printName ?? '' }}" class="form-item">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-tit">출력소속 <strong class="required">*</strong></div>
+                            <div class="form-con">
+                                <input type="text" name="printOffice" id="printOffice" value="{{ $apply->printOffice ?? '' }}" class="form-item">
+                            </div>
+                        </li>
+                    </ul>   
+                </div>    
+
                 @if( $step != 4 )
                 <div class="sub-tit-wrap">
                     <h4 class="sub-tit">

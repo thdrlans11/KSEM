@@ -53,31 +53,21 @@ function excelEntity($array = [])
 
 // D-day
 if (!function_exists('DDay')) {
-    function DDay($target)
-    {
-        if( $target == 'event' ){
-            $date = config('site.common.info.eventDay');
-        }else if( $target == 'abstract' ){
-            $date = '2025-03-31';
-        }else if( $target == 'earlyRegistration' ){
-            $date = '2025-03-14';
-        }else if( $target == 'lastRegistration' ){
-            $date = '2025-04-30';
-        }
-        
+    function DDay($date)
+    {      
         $date = explode('-', $date);
 
         $currentDate = \Carbon\Carbon::now();
         $targetDate = \Carbon\Carbon::create($date[0], $date[1], $date[2]);
 
-        $daysUntilTarget = $currentDate->diffInDays($targetDate);
+        $daysUntilTarget = $currentDate->diffInDays($targetDate)+1;
 
         if ($daysUntilTarget > 0) {
-            return "D-" . $daysUntilTarget;
+            return "D - " . $daysUntilTarget;
         }
 
         if ($daysUntilTarget == 0) {
-            return "D-day";
+            return "D - day";
         }
 
         return 'END';

@@ -8,7 +8,7 @@
             <legend class="hide">Memo</legend>
 
             <div class="sub-tit-wrap">
-                <h4 class="sub-tit">Registration Memo</h4>
+                <h4 class="sub-tit">등록 메모</h4>
             </div>
             <ul class="write-wrap">
                 <li>

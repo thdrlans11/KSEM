@@ -346,6 +346,7 @@ body.ovh{
     margin: 4px;
     border-radius: 3px;
     border: 1px solid transparent;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 .btn.btn-small{
@@ -354,6 +355,7 @@ body.ovh{
     margin: 4px;
     border: 1px solid transparent;
     border-radius: 3px;
+    font-size: 1.6rem;
 }
 .btn:has(img){
     gap: 20px;
@@ -363,6 +365,11 @@ body.ovh{
 .btn.color-gra{
     background: linear-gradient(to right, #07b4d3 10%, #07a1d3 90%);
     border-color: #2191bf;
+    color: #fff;
+}
+.btn.color-close{
+    background-color: #5a637a;
+    border-color: #5a637a;
     color: #fff;
 }
 .btn.color-type1{

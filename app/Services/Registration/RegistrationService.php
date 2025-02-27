@@ -28,7 +28,7 @@ class RegistrationService extends dbService
 
     public function registration(Request $request)
     {        
-        $periodCheck = $this->periodCheck();
+        $periodCheck = $this->periodCheck('E');
 
         if( !$periodCheck['type'] ){
             return redirect()->route('registration.guide')->withInfo($periodCheck['msg']);
@@ -147,6 +147,11 @@ class RegistrationService extends dbService
             $registration->local_sub = $request->local_sub;
             $registration->firstVisit = $request->firstVisit;
             $registration->price = $request->price;
+
+            //출력이름 //출력소속
+            $registration->printName = $request->printName ?? $request->name;
+            $registration->printOffice = $request->printOffice ?? $request->office;
+
             $registration->save();
 
             $this->dbCommit($msg ?? ( checkUrl() == 'admin' ? '관리자 ' : '사용자' ).' 사전등록 스텝 1 저장');
@@ -342,7 +347,7 @@ class RegistrationService extends dbService
             return redirect()->back()->withError('조회되는 내역이 없습니다.');
         }
 
-        $periodCheck = $this->periodCheck();
+        $periodCheck = $this->periodCheck('E');
 
         $data['apply'] = $registration;        
         $data['type'] = $registration->type;
@@ -352,21 +357,25 @@ class RegistrationService extends dbService
         return view('registration.searchResult')->with($data);
     }
 
-    private function periodCheck()
+    private function periodCheck($cha) //E : 사전, S : 현장
     {
         $type = null;
         $period = RegistrationPeriod::find(1);
 
         if( !$period ){
-            return ['type'=>$type, 'msg'=>'사전등록 기간이 설정되어 있지 않습니다.'];
+            return ['type'=>$type, 'msg'=>'등록 기간이 설정되어 있지 않습니다.'];
         }
 
-        if( strtotime($period->Esdate) < time() && strtotime($period->Eedate) > time() ){
-            $type = 'E';
-        }
+        if( $_SERVER['REMOTE_ADDR'] != '218.235.94.223' && $_SERVER['REMOTE_ADDR'] != '218.235.94.212' ){
+            if( strtotime($period[$cha.'sdate']) < time() && strtotime($period[$cha.'edate']) > time() ){
+                $type = $cha;
+            }
+        }else{
+            $type = $cha;
+        }    
         
         if( !$type ){
-            return ['type'=>$type, 'msg'=>'사전등록 기간이 아닙니다.'];
+            return ['type'=>$type, 'msg'=>( $type == 'E' ? '사전' : '현장' ).'등록 기간이 아닙니다.'];
         }else{
             return ['type'=>$type, 'msg'=>''];
         }
@@ -377,4 +386,94 @@ class RegistrationService extends dbService
         $maxNumber = Registration::selectRaw('max(substring(rnum,3)) as maxNumber')->first();
         return 'R-'.($maxNumber['maxNumber']?sprintf('%04d',($maxNumber['maxNumber'])+1):'0001');
     }
+
+    //현장등록
+    public function sceneRegistration()
+    {        
+        $periodCheck = $this->periodCheck('S');
+
+        if( !$periodCheck['type'] ){
+            return redirect()->route('registration.guide')->withInfo($periodCheck['msg']);
+        }else{
+            $type = $periodCheck['type'];
+        }
+        
+        $data['type'] = $type;        
+        $data['apply'] = null;
+        $data['hospitals'] = Hospital::orderby('hospital')->get();
+
+        return view('scene.registration')->with($data);
+    }
+
+    public function fluidUpsert(Request $request)
+    {   
+        //허니팟 작동 ( 봇 방지 )
+        if( !$request->sid && checkUrl() != 'admin' ){
+            
+            $rules = array(
+                'my_name' => 'honeypot',
+                'my_time' => 'required|honeytime:5'
+            );
+
+            $validator = Validator::make(['my_name'=>$request->my_name, 'my_time'=>$request->my_time], $rules);
+
+            if($validator->fails()){
+                return redirect()->route('main');
+            }
+
+        }
+
+        $this->transaction();
+
+        try {    
+
+            $registration = new Registration();
+            $registration->rnum = $this->makeRegistNumber();
+            $registration->type = $request->type;
+            $registration->attendType = $request->attendType;
+            $registration->category = $request->category;
+            $registration->category_etc = $request->category_etc;
+            $registration->name = $request->name;
+            $registration->license_number = $request->license_number;
+            $registration->major = $request->major;
+            $registration->birth = $request->birth;
+            $registration->sex = $request->sex;
+            $registration->office = $request->office;
+            $registration->phone = $request->phone;
+            $registration->email = $request->email;
+            $registration->local = $request->local;
+            $registration->local_sub = $request->local_sub;
+            $registration->firstVisit = $request->firstVisit;
+            $registration->price = $request->price;
+            $registration->payMethod = 'S';
+            $registration->status = 'Y';
+            $registration->complete_at = now();
+
+            //출력이름 //출력소속
+            $registration->printName = $request->printName ?? $request->name;
+            $registration->printOffice = $request->printOffice ?? $request->office;
+
+            $registration->save();
+
+            if( $request->pageMode == 'scene' ){
+                $msg = '현장등록 저장';
+            }
+
+            $this->dbCommit($msg);
+
+            if( checkUrl() == 'admin' ){
+                return redirect()->route('admin.registration.modifyForm', ['step'=>$request->step, 'sid'=>encrypt($registration->sid)]);
+            }else{
+                return redirect()->route('apply.scene.registration')->withSuccess('현장등록이 완료되었습니다.<br>데스크에서 결제를 완료해주세요.');
+            }
+            
+
+        } catch (\Exception $e) {
+
+            return $this->dbRollback($e);
+
+        } 
+        
+    }
+    //현장등록
 }

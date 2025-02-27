@@ -52,8 +52,9 @@ function idCheck(target){
 @endpush
 
 @section('content')
-<article class="sub-contents pt-20">
-    <div class="sub-conbox inner-layer">
+<div class="sub-conbox inner-layer">
+    
+    <div class="write-form-wrap">
 
         <div class="page-tit-wrap">
             <h3 class="page-tit">계정 {{ isset($user->sid) ? '수정' : '등록' }}</h3>
@@ -73,9 +74,9 @@ function idCheck(target){
                         <li>
                             <div class="form-tit"><strong class="required">*</strong> 아이디</div>
                             <div class="form-con">
-                                <div class="form-group form-group-text">
+                                <div class="form-group form-group-text has-btn">
                                     <input type="text" name="id" id="id" value="{{ $user->id ?? '' }}" class="form-item w-30p" placeholder="아이디">
-                                    <a href="#n" class="btn btn-type1 btn-small color-type8" onclick="idCheck()">중복검사</a>
+                                    <a href="#n" class="btn btn-small color-type3" onclick="idCheck()">중복검사</a>
                                 </div>
                             </div>
                         </li>
@@ -114,5 +115,5 @@ function idCheck(target){
             </fieldset>
         </form>
     </div>
-</article>
+</div>
 @endsection

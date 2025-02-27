@@ -57,57 +57,62 @@ function dbChange(sid,db,field,f){
 
 @section('content')
 
-{{-- @include('admin.registration.inc.avg') --}}
+@includeWhen($tabMode!='N', 'admin.registration.inc.avg')
 
 <div class="sub-tab-wrap">
     <ul class="sub-tab-menu cf">
         <li {!! $tabMode == 'E' ? 'class="on"' : '' !!}><a href="{{ route('admin.registration.list', ['tabMode'=>'E']) }}">사전등록</a></li>
         <li {!! $tabMode == 'S' ? 'class="on"' : '' !!}><a href="{{ route('admin.registration.list', ['tabMode'=>'S']) }}">현장등록</a></li>
         <li {!! $tabMode == 'I' ? 'class="on"' : '' !!}><a href="{{ route('admin.registration.list', ['tabMode'=>'I']) }}">임의등록</a></li>
-        <li {!! $tabMode == 'N' ? 'class="on"' : '' !!}><a href="{{ route('admin.registration.list', ['tabMode'=>'N']) }}">Cancel</a></li>
+        <li {!! $tabMode == 'N' ? 'class="on"' : '' !!}><a href="{{ route('admin.registration.list', ['tabMode'=>'N']) }}">휴지통</a></li>
     </ul>
 </div>
 
 <form action="{{ route('admin.registration.list', ['tabMode'=>$tabMode]) }}" method="get">
     <fieldset>
         <legend class="hide">검색</legend>
-        {{-- <div class="table-wrap">
+        <div class="table-wrap">
             <table class="cst-table">
                 <caption class="hide">
                     <colgroup>
-                        <col style="width: 18%;">
-                        <col style="width: 32%;">
-                        <col style="width: 18%;">
-                        <col style="width: 32%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th scope="row">Country</th>
+                            <th scope="row">이름</th>
                             <td class="text-left">
-                                <select name="ccode" id="ccode" class="form-item">
-                                    <option value="">==COUNTRY CHOICE==</option>
-                                    @foreach( $country as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('ccode') == $key ? 'selected' : '' }}>{{ $val['cn'] }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="name" id="name" value="{{ request()->query('name') }}" class="form-item">
                             </td>
-                            <th scope="row">접수번호</th>
+                            <th scope="row">이메일</th>
+                            <td class="text-left">
+                                <input type="text" name="email" id="email" value="{{ request()->query('email') }}" class="form-item">
+                            </td>
+                            <th scope="row">등록번호</th>
                             <td class="text-left">
                                 <input type="text" name="rnum" id="rnum" value="{{ request()->query('rnum') }}" class="form-item">
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">E-Mail</th>
+                            <th scope="row">면허번호</th>
                             <td class="text-left">
-                                <input type="text" name="email" id="email" value="{{ request()->query('email') }}" class="form-item">
+                                <input type="text" name="license_number" id="license_number" value="{{ request()->query('license_number') }}" class="form-item">
                             </td>
-                            <th scope="row">등록자 이름</th>
+                            <th scope="row">핸드폰번호</th>
                             <td class="text-left">
-                                <input type="text" name="regName" id="regName" value="{{ request()->query('regName') }}" class="form-item">
+                                <input type="text" name="phone" id="phone" value="{{ request()->query('phone') }}" class="form-item">
+                            </td>
+                            <th scope="row">소속</th>
+                            <td class="text-left">
+                                <input type="text" name="office" id="office" value="{{ request()->query('office') }}" class="form-item">
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Category</th>
+                            <th scope="row">등록구분</th>
                             <td class="text-left">
                                 <select name="category" id="category" class="form-item">
                                     <option value="">All</option>
@@ -116,17 +121,6 @@ function dbChange(sid,db,field,f){
                                     @endforeach
                                 </select>
                             </td>
-                            <th scope="row">Attendance Type</th>
-                            <td class="text-left">
-                                <select name="attendType" id="attendType" class="form-item">
-                                    <option value="">All</option>
-                                    @foreach( config('site.registration.attendType') as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('attendType') == $key ? 'selected' : '' }}>{{ $val }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <th scope="row">결제방법</th>
                             <td class="text-left">
                                 <select name="payMethod" id="payMethod" class="form-item">
@@ -149,8 +143,9 @@ function dbChange(sid,db,field,f){
                     </tbody>
                 </caption>
             </table>
-        </div> --}}
+        </div>
         
+        @if( $tabMode != 'N' )
         <div class="table-wrap">
             <table class="cst-table">
                 <caption class="hide">기간 등록</caption>
@@ -182,11 +177,12 @@ function dbChange(sid,db,field,f){
                 </tbody>
             </table>
         </div>
+        @endif
 
         <div class="btn-wrap text-center">
             <button type="submit" class="btn btn-type1 color-type4">검색</button>
             <button type="reset" class="btn btn-type1 color-type6" onclick="location.href='{{ route('admin.registration.list', ['tabMode'=>$tabMode]) }}'">검색 초기화</button>
-            <a href="{{ route('admin.registration.excel', request()->except('page')) }}" class="btn btn-type1 color-type10" target="_blank">Get Excel File</a>
+            <a href="{{ route('admin.registration.excel', ['tabMode'=>$tabMode] + request()->except('page')) }}" class="btn btn-type1 color-type10" target="_blank">Get Excel File</a>
         </div>
     </fieldset>
 </form>
@@ -213,17 +209,18 @@ function dbChange(sid,db,field,f){
             <col style="width: 7%">
             
             <col style="width: 6%;">
-            <col style="width: 6%;">
             <col style="width: *;">
             <col style="width: 10%;">
             <col style="width: 8%;">
 
+            <col style="width: 6%;">
             <col style="width: 7%;">
             <col style="width: 7%;">
 
             <col style="width: 6%;">
             <col style="width: 6%;">
             <col style="width: 5%;">
+            <col style="width: 3%;">
             <col style="width: 3%;">
             <col style="width: 5%;">
         </colgroup>
@@ -238,16 +235,17 @@ function dbChange(sid,db,field,f){
                 <th scope="col">등록번호</th>
                 <th scope="col">등록타입</th>
                 <th scope="col">등록구분</th>
-                <th scope="col">이름</th>
-                <th scope="col">면허번호</th>
+                <th scope="col">이름<br>(면허번호)</th>
                 <th scope="col">소속</th>
                 <th scope="col">이메일</th>
                 <th scope="col">휴대폰번호</th>
+                <th scope="col">금액</th>
                 <th scope="col">결제방법</th>
                 <th scope="col">결제상태</th>
                 <th scope="col">입금완료일</th>
                 <th scope="col">등록일<br>(접수완료일)</th>
                 <th scope="col">Mail 재발송</th>
+                <th scope="col">VIP</th>
                 <th scope="col">메모</th>
                 <th scope="col">관리</th>
             </tr>
@@ -266,12 +264,13 @@ function dbChange(sid,db,field,f){
                 </td>
                 <td>{{ config('site.registration.type')[$d->type] }}</td>
                 <td>{{ $d->category == 'Z' ? $d->category_etc : config('site.registration.category')[$d->category] }}</td>
-                <td>{{ $d->name }}</td>
-                <td>{{ $d->license_number }}</td>
+                <td>{{ $d->name }} {!! $d->license_number ? '<br>('.$d->license_number.')' : '' !!}</td>
+                
                 <td>{{ $d->office }}</td>
                 <td>{{ $d->email }}</td>
                 <td>{{ $d->phone }}</td>              
                 
+                <td>{{ number_format($d->price) }}</td>
                 <td>
                     @if( $d->payMethod )
                     <select onchange="dbChange('{{ encrypt($d->sid) }}', 'registrations', 'payMethod', this);" class="form-item">  
@@ -303,6 +302,13 @@ function dbChange(sid,db,field,f){
                     @else
                     -
                     @endif
+                </td>
+                <td>
+                    <a href="{{ route('admin.registration.vipForm', ['sid'=>encrypt($d->sid)]) }}" class="Load_Base_fix {{ $d->vip ? 'text-red' : '' }}" Wsize="800" Hsize="400" Tsize="15%" Reload="Y">
+                        <span class="material-symbols-outlined">
+                            {{ $d->vip ? 'stars' : 'cancel' }}
+                        </span>
+                    </a>
                 </td>
                 <td>
                     <a href="{{ route('admin.registration.memoForm', ['sid'=>encrypt($d->sid)]) }}" class="Load_Base_fix" Wsize="730" Hsize="900" Tsize="2%" Reload="Y">

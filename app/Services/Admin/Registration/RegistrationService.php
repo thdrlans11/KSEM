@@ -2,7 +2,6 @@
 
 namespace App\Services\Admin\Registration;
 
-use App\Models\Country;
 use App\Models\Hospital;
 use App\Models\Registration;
 use App\Models\RegistrationPeriod;
@@ -27,15 +26,8 @@ class RegistrationService extends dbService
         }
         
         foreach( $request->all() as $key => $val ){
-            if( ( $key == 'ccode' || $key == 'rnum' || $key == 'email' || $key == 'regName' || $key == 'category' || $key == 'attendType' || $key == 'payMethod' || $key == 'payStatus' || $key == 'lang' ) && $val ){
-                if( $key == 'regName' ){
-                    $lists->where(function($lists) use ($val) {
-                        $lists->whereRaw("CONCAT(firstName,' ',lastName) LIKE '%".$val."%'")
-                            ->orWhere('name', 'LIKE', '%' . $val . '%');
-                    });
-                }else{
-                    $lists->where($key, 'LIKE', '%'.$val.'%');
-                }
+            if( ( $key == 'name' || $key == 'email' || $key == 'rnum' || $key == 'license_number' || $key == 'phone' || $key == 'office' || $key == 'category' || $key == 'payMethod' || $key == 'payStatus' || $key == 'attendType' ) && $val ){
+                $lists->where($key, 'LIKE', '%'.$val.'%');
             }
         }
 
@@ -68,7 +60,6 @@ class RegistrationService extends dbService
         $data['captcha'] = (new CommonService())->captchaMakeService();
         $data['apply'] = $registration;
         $data['hospitals'] = Hospital::orderby('hospital')->get();
-        $data['period'] = RegistrationPeriod::find(1);
 
         return $data;
     }
@@ -179,6 +170,35 @@ class RegistrationService extends dbService
             $this->dbCommit('사전등록 메모 변경'); 
             
             return redirect()->back()->withSuccess('메모 저장이 완료되었습니다.')->with('close','Y');
+
+        } catch (\Exception $e) {
+
+            return $this->dbRollback($e);
+
+        }
+    }
+
+    public function vipForm(Request $request)
+    {
+        $registration = Registration::find(decrypt($request->sid));
+        $data['apply'] = $registration;
+
+        return $data;
+    }    
+
+    public function vip(Request $request)
+    {   
+        $this->transaction();
+
+        try {
+
+            $registration = Registration::find(decrypt($request->sid));
+            $registration->vip = $request->vip;
+            $registration->save();
+
+            $this->dbCommit('사전등록 VIP 변경'); 
+            
+            return redirect()->back()->withSuccess('저장이 완료되었습니다.')->with('close','Y');
 
         } catch (\Exception $e) {
 

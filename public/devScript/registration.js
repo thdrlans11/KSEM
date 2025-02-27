@@ -226,30 +226,33 @@ function registrationCheck_01(f)
         return false;
     }
 
-    var captcha = $("#captcha").val();
-    var captchaCheck = true;
-
-    if( !captcha ){
-        swalAlert("자동화 프로그램 입력 방지 번호를 입력해주세요.", "", "warning", "captcha");
-        return false;
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: '/common/captcha-check',
-        data: { captcha : captcha },
-        async: false,
-        success: function(data) {
-			if( $.trim(data) == "fail" ){
-                captchaCheck = false;
-            }
-        }
-    });
+    if( $("input:hidden[name='pageMode']").val() != "scene" ){
     
-    if( !captchaCheck ){
-        swalAlert("자동화 프로그램 입력방지 인증에 실패하였습니다.", "", "warning", "captcha");
-        return false;
-    }
+        var captcha = $("#captcha").val();
+        var captchaCheck = true;
+
+        if( !captcha ){
+            swalAlert("자동화 프로그램 입력 방지 번호를 입력해주세요.", "", "warning", "captcha");
+            return false;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/common/captcha-check',
+            data: { captcha : captcha },
+            async: false,
+            success: function(data) {
+                if( $.trim(data) == "fail" ){
+                    captchaCheck = false;
+                }
+            }
+        });
+        
+        if( !captchaCheck ){
+            swalAlert("자동화 프로그램 입력방지 인증에 실패하였습니다.", "", "warning", "captcha");
+            return false;
+        }
+    }    
 }
 
 function registrationCheck_02(f)

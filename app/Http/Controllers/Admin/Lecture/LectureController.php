@@ -25,34 +25,18 @@ class LectureController extends Controller
 
     public function modifyForm(Request $request)
     {
-        return view('admin.registration.form')->with( $this->RegistrationService->modifyForm($request) );
+        return view('admin.lecture.form')->with( $this->LectureService->modifyForm($request) );
     }
 
     public function modify(Request $request)
     {
-        if( $request->step == '1' ){
-            return $this->RegistrationUserService->upsert_01($request);
-        }else if( $request->step == '2' ){
-            return $this->RegistrationUserService->upsert_02($request);
-        }else if( $request->step == '3' ){
-            return $this->RegistrationUserService->upsert_03($request);
-        }
-    }
-
-    public function sendMailForm(Request $request)
-    {
-        return view('admin.registration.mail')->with( $this->RegistrationService->sendMailForm($request) );
-    }
-
-    public function sendMail(Request $request)
-    {
-        return $this->RegistrationService->sendMail($request);
+        return $this->LectureUserService->upsert($request);
     }
 
     public function excel(Request $request)
     {
         $request->merge(['excel' => true]);
-        return $this->RegistrationService->list($request);
+        return $this->LectureService->list($request);
     }
 
     public function dbChange(Request $request)
@@ -62,11 +46,11 @@ class LectureController extends Controller
 
     public function memoForm(Request $request)
     {
-        return view('admin.registration.memo')->with( $this->RegistrationService->memoForm($request) );
+        return view('admin.lecture.memo')->with( $this->LectureService->memoForm($request) );
     }
 
     public function memo(Request $request)
     {
-        return $this->RegistrationService->memo($request);
+        return $this->LectureService->memo($request);
     }
 }

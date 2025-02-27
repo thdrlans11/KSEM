@@ -6,6 +6,7 @@ $(function (e) {
 		btnTop();
         wideLayout();
         toggleCon();
+		gnb();
 
 		if(wWidth < 1025){		
 		}else{		
@@ -106,4 +107,16 @@ function toggleCon(){
             $(this).parent().next('.js-toggle-con').stop().slideToggle();
         }
     });
+}
+
+function gnb(){
+    if($('.js-gnb > li > ul').length){
+        $('.js-gnb > li').on('mouseenter',function(e){
+            $(this).find('ul').stop().slideToggle(400);
+            $(this).siblings().find('ul').stop().slideUp(200);
+        });
+        $('.js-gnb').on('mouseleave',function(e){
+            $('.js-gnb > li > ul').stop().slideUp(200);
+        });
+    }
 }

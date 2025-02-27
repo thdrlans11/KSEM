@@ -25,10 +25,12 @@ Route::prefix('admin')->group(function(){
         Route::post('/modify/{sid}', 'modify')->name('admin.registration.modify');
         Route::get('/sendMail/{sid}', 'sendMailForm')->name('admin.registration.sendMailForm');
         Route::post('/sendMail/{sid}', 'sendMail')->name('admin.registration.sendMail');
-        Route::get('/excel', 'excel')->name('admin.registration.excel');
+        Route::get('/excel/{tabMode}', 'excel')->where('tabMode', 'E|S|I|N')->name('admin.registration.excel');
         Route::post('/dbChange', 'dbChange')->name('admin.registration.dbChange');
         Route::get('/memo/{sid}', 'memoForm')->name('admin.registration.memoForm');
         Route::post('/memo/{sid}', 'memo')->name('admin.registration.memo');
+        Route::get('/vip/{sid}', 'vipForm')->name('admin.registration.vipForm');
+        Route::post('/vip/{sid}', 'vip')->name('admin.registration.vip');
     });
 
     //강의원고 관리
@@ -37,8 +39,6 @@ Route::prefix('admin')->group(function(){
         
         Route::get('/modify/{sid}', 'modifyForm')->name('admin.lecture.modifyForm');
         Route::post('/modify/{sid}', 'modify')->name('admin.lecture.modify');
-        Route::get('/sendMail/{sid}', 'sendMailForm')->name('admin.lecture.sendMailForm');
-        Route::post('/sendMail/{sid}', 'sendMail')->name('admin.lecture.sendMail');
         Route::get('/excel', 'excel')->name('admin.lecture.excel');
         Route::post('/dbChange', 'dbChange')->name('admin.lecture.dbChange');
         Route::get('/memo/{sid}', 'memoForm')->name('admin.lecture.memoForm');

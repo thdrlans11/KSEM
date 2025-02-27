@@ -11,7 +11,6 @@
     <input type="hidden" name="step" value="{{ $step }}"/>
     <input type="hidden" name="type" value="{{ $type }}"/>
     <input type="hidden" name="sid" value="{{ isset($apply) ? encrypt($apply->sid) : '' }}"/>
-    <input type="hidden" name="saveMode" id="saveMode" value=""/>
     <input type="hidden" name="pageMode" id="pageMode" value="regist"/>
 
     @if( $step == 1 && !isset($apply) )
@@ -131,7 +130,7 @@
         </div>  
         <div class="term-wrap bg-grey">
             <p><strong>* 개인정보의 수집 및 이용목적</strong><br>
-                대한응급의학회는 2024년 대한응급의학회 추계학술대회 사전등록을 온라인으로 하고 있습니다. 이때 제공해주신 개인정보를 바탕으로 회원님의 등록 접수가 가능합니다.</p>
+                대한응급의학회는 2025년 대한응급의학회 춘계학술대회 사전등록을 온라인으로 하고 있습니다. 이때 제공해주신 개인정보를 바탕으로 회원님의 등록 접수가 가능합니다.</p>
             <p><strong>* 수집하는 개인정보의 항목</strong><br>
                 대한응급의학회는 온라인 사전등록을 위해 개인정보를 요구하고 있습니다. 회원구분, 성명, 등록비, 소속, 핸드폰, 이메일을 필수입력 사항으로 수집하고 있습니다.</p>
         </div>

@@ -67,85 +67,50 @@ function dbChange(sid,db,field,f){
 <form action="{{ route('admin.lecture.list') }}" method="get">
     <fieldset>
         <legend class="hide">검색</legend>
-        {{-- <div class="table-wrap">
+        <div class="table-wrap">
             <table class="cst-table">
                 <caption class="hide">
                     <colgroup>
-                        <col style="width: 18%;">
-                        <col style="width: 32%;">
-                        <col style="width: 18%;">
-                        <col style="width: 32%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
+                        <col style="width: 16.6%;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th scope="row">Country</th>
-                            <td class="text-left">
-                                <select name="ccode" id="ccode" class="form-item">
-                                    <option value="">==COUNTRY CHOICE==</option>
-                                    @foreach( $country as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('ccode') == $key ? 'selected' : '' }}>{{ $val['cn'] }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
                             <th scope="row">접수번호</th>
                             <td class="text-left">
                                 <input type="text" name="rnum" id="rnum" value="{{ request()->query('rnum') }}" class="form-item">
                             </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">E-Mail</th>
+                            <th scope="row">이메일</th>
                             <td class="text-left">
                                 <input type="text" name="email" id="email" value="{{ request()->query('email') }}" class="form-item">
                             </td>
-                            <th scope="row">등록자 이름</th>
+                            <th scope="row">이름</th>
                             <td class="text-left">
-                                <input type="text" name="regName" id="regName" value="{{ request()->query('regName') }}" class="form-item">
+                                <input type="text" name="name" id="name" value="{{ request()->query('name') }}" class="form-item">
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Category</th>
+                            <th scope="row">소속</th>
                             <td class="text-left">
-                                <select name="category" id="category" class="form-item">
-                                    <option value="">All</option>
-                                    @foreach( config('site.registration.category') as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('category') == $key ? 'selected' : '' }}>{{ $val }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="office" id="office" value="{{ request()->query('office') }}" class="form-item">
                             </td>
-                            <th scope="row">Attendance Type</th>
+                            <th scope="row">휴대폰번호</th>
                             <td class="text-left">
-                                <select name="attendType" id="attendType" class="form-item">
-                                    <option value="">All</option>
-                                    @foreach( config('site.registration.attendType') as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('attendType') == $key ? 'selected' : '' }}>{{ $val }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="phone" id="phone" value="{{ request()->query('phone') }}" class="form-item">
                             </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">결제방법</th>
+                            <th scope="row">전화번호</th>
                             <td class="text-left">
-                                <select name="payMethod" id="payMethod" class="form-item">
-                                    <option value="">All</option>
-                                    @foreach( config('site.registration.payMethod') as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('payMethod') == $key ? 'selected' : '' }}>{{ $val }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <th scope="row">결제상태</th>
-                            <td class="text-left">
-                                <select name="payStatus" id="payStatus" class="form-item">
-                                    <option value="">All</option>
-                                    @foreach( config('site.registration.payStatus') as $key => $val )
-                                    <option value="{{ $key }}" {{ request()->query('payStatus') == $key ? 'selected' : '' }}>{{ $val }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="tel" id="tel" value="{{ request()->query('tel') }}" class="form-item">
                             </td>
                         </tr>
                     </tbody>
                 </caption>
             </table>
-        </div> --}}
+        </div>
         
         <div class="table-wrap">
             <table class="cst-table">
@@ -201,47 +166,38 @@ function dbChange(sid,db,field,f){
     <table class="cst-table list-table">
         <caption class="hide">목록</caption>
         <colgroup>
-            <col style="width: 2%;">
-            <col style="width: 4%;">
+            <col style="width: 3%;">
+            <col style="width: 5%;">
+            <col style="width: 8%;">
+            <col style="width: 12%;">
+            
+            
+            
             <col style="width: *">
-            <col style="width: 6%;">
+            <col style="width: 8%;">
+            <col style="width: 8%;">
             
             <col style="width: 8%;">
-            <col style="width: 6%;">
-            <col style="width: 8%;">
-            <col style="width: 6%;">
-            <col style="width: 6%;">
-
             <col style="width: 8%;">
             <col style="width: 8%;">
 
             <col style="width: 6%;">
-            <col style="width: 6%;">
-            <col style="width: 6%;">
-            <col style="width: 3%;">
+            <col style="width: 4%;">
             <col style="width: 5%;">
         </colgroup>
         <thead>
             <tr>
-                {{-- <th scope="col">
-                    <div class="checkbox-wrap cst">
-                        <label for="chk2" class="checkbox-group"><input type="checkbox" name="chk2" id="chk2"></label>
-                    </div>
-                </th> --}}
                 <th scope="col">No</th>
                 <th scope="col">접수번호</th>
-                <th scope="col">Email</th>
-                <th scope="col">Name<br>(Kor)</th>
-                <th scope="col">Country</th>
-                <th scope="col">Category</th>
-                <th scope="col">Attendance Type</th>
-                <th scope="col">등록비</th>
-                <th scope="col">접수시작일<br>(접수완료일)</th>
-                <th scope="col">결제방법</th>
-                <th scope="col">결제상태</th>
-                <th scope="col">입금 예정일<br>(입금자)</th>
-                <th scope="col">입금완료일</th>
-                <th scope="col">Mail 재발송</th>
+                <th scope="col">이름</th>
+                <th scope="col">이메일</th>
+                <th scope="col">소속</th>
+                <th scope="col">휴대폰번호</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">강의원고</th>
+                <th scope="col">이력(CV)</th>
+                <th scope="col">발표슬라이드</th>
+                <th scope="col">등록완료일</th>
                 <th scope="col">메모</th>
                 <th scope="col">관리</th>
             </tr>
@@ -249,71 +205,33 @@ function dbChange(sid,db,field,f){
         <tbody>
             @foreach( $lists as $index => $d )
             <tr>
-                {{-- <td>
-                    <div class="checkbox-wrap cst">
-                        <label for="" class="checkbox-group"><input type="checkbox" name="" id=""></label>
-                    </div>
-                </td> --}}
                 <td>{{ $d->seq }}</td>
                 <td>
-                    @if( $d->status == 'Y' )
-                    <a href="{{ route('admin.registration.modifyForm', ['sid'=>encrypt($d->sid), 'step'=>'1']) }}" class="Load_Base_fix" Wsize="1500" Hsize="900" Tsize="2%" Reload="Y">{{ $d->rnum }}</a>
-                    @else
-                    {{ $d->rnum }}
-                    @endif
+                    <a href="{{ route('admin.lecture.modifyForm', ['sid'=>encrypt($d->sid)]) }}" class="Load_Base_fix" Wsize="1200" Hsize="900" Tsize="2%" Reload="Y">{{ $d->rnum }}</a>
                 </td>
+                <td>{{ $d->name }}</td>
                 <td>{{ $d->email }}</td>
-                <td>{{ $d->firstName.' '.$d->lastName }} {!! $d->lang == 'KOR' ? '<br>'.'( '.$d->name.' )' : '' !!}</td>
-                <td>{{ $d->country->cn }}</td>
+                <td>{{ $d->office }}</td>
+                <td>{{ $d->phone }}</td>
+                <td>{{ $d->tel }}</td>
                 <td>
-                    {{ $d->category ? config('site.registration.category')[$d->category] : '' }}
-                    @if( $d->category == 'B' )
-                    <a href="{{ route('download', ['type'=>'only', 'tbl'=>'registration', 'sid'=>encrypt($d->sid)]) }}" class="btn btn-small color-type8">다운로드</a>
-                    @endif
-                </td>
-                <td>{{ $d->attendType ? config('site.registration.attendType')[$d->attendType] : '' }}</td>
-                <td>{{ config('site.registration.unit')[$d->lang] }} {{ number_format($d->price) }}</td>
-                <td>{{ $d->created_at->toDateString() }} {!! $d->complete_at ? '<br>'.'( '.$d->complete_at->toDateString().' )' : '' !!}</td>
-                <td>
-                    @if( $d->status == 'Y' )
-                        @if( $d->payMethod )
-                        <select onchange="dbChange('{{ encrypt($d->sid) }}', 'registration', 'payMethod', this);" class="form-item">  
-                            @foreach( config('site.registration.payMethod') as $key => $val )
-                            <option value="{{ $key }}" {{ $d->payMethod == $key ? 'selected' : '' }}>{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        @endif
-                    @else
-                    {{ $d->payMethod ? config('site.registration.payMethod')[$d->payMethod] : '-' }}
-                    @endif    
+                    <a href="{{ route('download', ['type'=>'only', 'tbl'=>'lectures', 'sid'=>encrypt($d->sid), 'kind'=>'realfile']) }}">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </a>
                 </td>
                 <td>
-                    @if( $d->status == 'Y' )
-                        @if( $d->payMethod )
-                        <select onchange="dbChange('{{ encrypt($d->sid) }}', 'registration', 'payStatus', this);" class="form-item">  
-                            @foreach( config('site.registration.payStatus') as $key => $val )
-                            <option value="{{ $key }}" {{ $d->payStatus == $key ? 'selected' : '' }}>{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        @if( $d->payStatus == 'Y' )
-                        <a href="{{ route('registration.receipt', ['sid'=>encrypt($d->sid)]) }}" class="btn btn-small color-type4" onclick="window.open(this.href,'receipt','width=800,height=852,scrollbars=yes'); return false;">Receipt</a>
-                        @endif
-                        @endif
-                    @else
-                    {{ $d->payMethod ? config('site.registration.payStatus')[$d->payStatus] : '-' }}
-                    @endif    
-                </td>
-                <td>{!! $d->payMethod == 'B' ? $d->payDate.'<br>'.'( '.$d->payName.' )' : '-' !!}</td>
-                <td>{{ $d->payComplete_at ? $d->payComplete_at->toDateString() : '-' }}</td>
-                <td>
-                    @if( $d->status == 'Y' )
-                    <a href="{{ route('admin.registration.sendMailForm', ['sid'=>encrypt($d->sid)]) }}" class="btn btn-small color-type7 Load_Base_fix" Wsize="730" Hsize="900" Tsize="2%" Reload="N">메일발송</a>
-                    @else
-                    -
-                    @endif
+                    <a href="{{ route('download', ['type'=>'only', 'tbl'=>'lectures', 'sid'=>encrypt($d->sid), 'kind'=>'realfile2']) }}">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </a>
                 </td>
                 <td>
-                    <a href="{{ route('admin.registration.memoForm', ['sid'=>encrypt($d->sid)]) }}" class="Load_Base_fix" Wsize="730" Hsize="900" Tsize="2%" Reload="Y">
+                    <a href="{{ route('download', ['type'=>'only', 'tbl'=>'lectures', 'sid'=>encrypt($d->sid), 'kind'=>'realfile3']) }}">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </a>
+                </td>
+                <td>{{ $d->complete_at ? $d->complete_at->toDateString() : '' }}</td>
+                <td>
+                    <a href="{{ route('admin.lecture.memoForm', ['sid'=>encrypt($d->sid)]) }}" class="Load_Base_fix" Wsize="730" Hsize="900" Tsize="2%" Reload="Y">
                         <span class="material-symbols-outlined">
                             content_paste{{ !$d->memo ? '_off' : ''}}
                         </span>
@@ -321,10 +239,10 @@ function dbChange(sid,db,field,f){
                 </td>
                 <td>
                     @if( request()->query('del') == 'Y' )
-                    <a href="#n" class="btn btn-small color-type4 btn-recovery" onclick="swalConfirm('복구 처리하시겠습니까?', '', function(){ dbChange('{{ encrypt($d->sid) }}','registration','delete',$('.btn-recovery')); })" data-status="N">복구</a>
+                    <a href="#n" class="btn btn-small color-type4 btn-recovery" onclick="swalConfirm('복구 처리하시겠습니까?', '', function(){ dbChange('{{ encrypt($d->sid) }}','lectures','delete',$('.btn-recovery')); })" data-status="N">복구</a>
                     @else
-                        <a href="{{ route('admin.registration.modifyForm', ['sid'=>encrypt($d->sid), 'step'=>'1']) }}" class="btn-admin btn-modify Load_Base_fix" Wsize="1500" Hsize="900" Tsize="2%" Reload="Y"><img src="/devAdmin/assets/image/admin/ic_modify.png" alt="수정"></a>
-                        <a href="#n" class="btn-admin btn-del" onclick="swalConfirm('삭제 처리하시겠습니까?', '', function(){ dbChange('{{ encrypt($d->sid) }}','registration','delete',$('.btn-del')); })" data-status="Y"><img src="/devAdmin/assets/image/admin/ic_del.png" alt="삭제"></a>
+                        <a href="{{ route('admin.lecture.modifyForm', ['sid'=>encrypt($d->sid), 'step'=>'1']) }}" class="btn-admin btn-modify Load_Base_fix" Wsize="1200" Hsize="900" Tsize="2%" Reload="Y"><img src="/devAdmin/image/admin/ic_modify.png" alt="수정"></a>
+                        <a href="#n" class="btn-admin btn-del" onclick="swalConfirm('삭제 처리하시겠습니까?', '', function(){ dbChange('{{ encrypt($d->sid) }}','lectures','delete',$('.btn-del')); })" data-status="Y"><img src="/devAdmin/image/admin/ic_del.png" alt="삭제"></a>
                     @endif
                 </td>
             </tr>

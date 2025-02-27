@@ -1,0 +1,397 @@
+@extends('include.layout')
+
+@section('content')
+<ul class="sub-tab-menu">
+    <li class="on"><a href="{{ route('program.glance') }}"><span>전체프로그램</span></a></li>
+    <li><a href="{{ route('program.scientific') }}"><span>세부프로그램</span></a></li>
+</ul>
+</div>
+<div class="all-program">
+<div class="sub-tab-wrap">
+    <ul class="sub-tab-menu n3 program-tab-menu js-tab-slide">
+        <li class="on all"><a href="#n">전체</a></li>
+        <li><a href="#n">4월 17일</a></li>
+        <li><a href="#n">4월 18일</a></li>
+    </ul>
+    
+    <!-- 
+        <span class="program-tag tag-color1">연수강좌</span>
+        <span class="program-tag tag-color2">Plenary 1</span>
+        <span class="program-tag tag-color3">심포지엄</span>
+        <span class="program-tag tag-color4">필수평점</span>
+        <span class="program-tag tag-color5">구연1</span>
+        <span class="program-tag tag-color6">토론회</span>
+    -->
+    <!-- Day 1 -->
+    <div class="sub-tab-slidecon js-tab-slidecon">
+        <div class="table-wrap scroll-x touch-help">
+            <table class="cst-table program-table">
+                <caption class="hide">4월 17일</caption>
+                <colgroup>
+                    <col>
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                    <col style="width: 10%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col" class="bg-grey">구분</th>
+                        <th scope="col" class="bg-color1">다목적홀1</th>
+                        <th scope="col" class="bg-color2">208-213호	</th>
+                        <th scope="col" class="bg-color3">201-204호</th>
+                        <th scope="col" class="bg-color4">206-207호</th>
+                        <th scope="col" class="bg-color5">214호</th>
+                        <th scope="col" class="bg-color6">302-303호</th>
+                        <th scope="col" class="bg-color7">305-306호</th>
+                        <th scope="col" class="bg-color8">301호</th>
+                        <th scope="col" class="bg-color9">304호</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>08:30-09:00</th>
+                        <td colspan="9" class="text-center">접수 및 현장 등록 (Morning coffee) /부스세레머니(09:30~09:50)</td>
+                    </tr>
+                    <tr>
+                        <th>09:00-09:30</th>
+                        <td colspan="9" class="text-center">Morning Coffee Time</td>
+                    </tr>
+                    <tr>
+                        <th>09:30-10:40</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Cardiovascular Emergencies #1 <br>
+                            [ECG]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Airway Management
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Toxicology #1	
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            책임지도전문의교육
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>10:40-11:00</th>
+                        <td colspan="9" class="text-center break">Break</td>
+                    </tr>
+                    <tr>
+                        <th>11:00-11:20</th>
+                        <td class="text-center">
+                            2025 대한응급의학회 춘계학술대회 개회식
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>11:20-12:00</th>
+                        <td class="text-center">
+                            Main session	
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>12:00-13:10</th>
+                        <td class="text-center">
+                            Luncheon <br>symposium	
+                        </td>
+                        <td class="text-center">
+                            Luncheon <br>symposium
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            대의원회의 (307호)
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>13:10-14:20</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Emergency Imaging #1
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color4">필수평점</span>
+                            필수평점 #1 <br>
+                            [의료법]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Pediatric Emergencies #1
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Obstetric Emergencies
+                        </td>
+                        <td class="text-center">
+                            연구위원회 Bench to Venture in Emergency Medicine (응급의학 연구성과의 산업화) <p class="text-red">(13:10~15:20)</p>
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">응급구조사세션</td>
+                        <td class="text-center"></td>
+                        <td class="text-center">책임지도전문의교육</td>
+                    </tr>
+                    <tr>
+                        <th>14:20-14:40</th>
+                        <td colspan="9" class="text-center break">Break</td>
+                    </tr>
+                    <tr>
+                        <th>14:40-15:50</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Critical Care #1
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Digital Health Bioinformatics in Emergency Medicine
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Emergency Medical Services #1	
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            정책위원회 응급의료체계발전 공동심포지엄
+                        </td>
+                        <td class="text-center">
+                            응급구조사세션
+                        </td>
+                        <td class="text-center">
+                            CAPTURES <p class="text-red">(15:00-18:00)</p>
+                        </td>
+                        <td class="text-center">
+                            책임지도전문의교육
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>15:50-16:10	</th>
+                        <td colspan="9" class="text-center break">Break</td>
+                    </tr>
+                    <tr>
+                        <th>16:10-17:20</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Resuscitation #1
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color4">필수평점</span>
+                            필수평점 #2 <br>
+                            [인공지능 의료윤리]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Gastrointestinal Emergencies
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Nephrological Emergencies
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            정책위원회 응급의료체계발전 공동심포지엄
+                        </td>
+                        <td class="text-center">
+                            응급구조사세션
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            책임지도전문의교육
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>17:20-17:40	</th>
+                        <td colspan="9" class="text-center">경품추첨</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- // Day 1 -->
+    <!-- Day 2 -->
+    <div class="sub-tab-slidecon js-tab-slidecon">
+        <div class="table-wrap scroll-x touch-help">
+            <table class="cst-table program-table">
+                <caption class="hide">4월 18일</caption>
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col" class="bg-grey">구분</th>
+                        <th scope="col" class="bg-color1">다목적홀1</th>
+                        <th scope="col" class="bg-color2">208-213호</th>
+                        <th scope="col" class="bg-color3">201-204호</th>
+                        <th scope="col" class="bg-color4">206-207호</th>
+                        <th scope="col" class="bg-color5">214호</th>
+                        <th scope="col" class="bg-color6">301호-304호</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>08:00-09:30</th>
+                        <td colspan="6" class="text-center">접수 및 현장 등록 (Morning coffee)</td>
+                    </tr>
+                    <tr>
+                        <th>09:30-10:40</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Cardiovascular Emergencies #2 <br>
+                            [ECG 외]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Toxicology #2
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Wound Management
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            수련질향상공청회
+                        </td>
+                        <td class="text-center">
+                            KTAS <p class="text-red">(09:30-13:00)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>10:40-11:00</th>
+                        <td colspan="6" class="text-center break">Break</td>
+                    </tr>
+                    <tr>
+                        <th>11:00-11:40</th>
+                        <td class="text-center">
+                            Main session
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>11:40-12:00</th>
+                        <td class="text-center">
+                            총회
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>12:00-13:10</th>
+                        <td class="text-center">
+                            Luncheon <br>symposium
+                        </td>
+                        <td class="text-center">
+                            Luncheon <br>symposium
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            이사회 (307호)
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>13:10-14:20</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Critical Care #2
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color4">필수평점</span>
+                            필수평점 #3 <br>
+                            [완화의료 윤리와 연명의료법]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Disaster Medicine
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Emergency <br>
+                            Medical Services #2
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>14:20-14:40</th>
+                        <td colspan="6" class="text-center break">Break</td>
+                    </tr>
+                    <tr>
+                        <th>14:40-15:50</th>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Resuscitation #2
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Practical Emergency and Critical Imaging #2 <br>
+                            [CT Cases of Specialist at Center for Severe Trauma]
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Digital Healthcare in Emergency Medicine
+                        </td>
+                        <td class="text-center">
+                            <span class="program-tag tag-color1">연수강좌</span>
+                            Pediatric <br>
+                            Emergencies #2
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                        <th>15:50-16:10</th>
+                        <td colspan="6" class="text-center">경품 추첨</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- // Day 2 -->
+</div>
+@endsection

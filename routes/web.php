@@ -29,7 +29,6 @@ Route::prefix('registration')->controller(\App\Http\Controllers\Registration\Reg
         Route::post('makeLocalSub', 'makeLocalSub')->name('apply.registration.makeLocalSub');
         Route::post('upsert/{step}', 'upsert')->where('step', '1|2')->name('apply.registration.upsert');
         Route::post('payRegist', 'payRegist')->name('apply.registration.payRegist');
-        
     });
 
     //Route::get('payCancel', 'payCancel')->name('apply.registration.payCancel');
@@ -39,6 +38,14 @@ Route::prefix('registration')->controller(\App\Http\Controllers\Registration\Reg
 
     Route::get('search', 'search')->name('registration.search');
     Route::post('search', 'searchResult')->name('registration.searchResult');
+});
+
+//현장등록
+Route::prefix('scene')->controller(\App\Http\Controllers\Scene\SceneController::class)->group(function() {
+    Route::middleware('noCash')->group(function(){
+        Route::get('registration', 'registration')->name('apply.scene.registration');
+        Route::post('upsert', 'upsert')->name('apply.scene.registration.upsert');
+    });    
 });
 
 //원고등록
@@ -52,6 +59,18 @@ Route::prefix('lecture')->controller(\App\Http\Controllers\Lecture\LectureContro
     });
     Route::get('search', 'search')->name('lecture.search');
     Route::post('search', 'searchResult')->name('lecture.searchResult');
+});
+
+//학회 프로그램
+Route::prefix('program')->controller(\App\Http\Controllers\Program\ProgramController::class)->group(function() {
+    Route::get('', 'glance')->name('program.glance');
+    Route::get('scientific', 'scientific')->name('program.scientific');
+});
+
+//행사장안내
+Route::prefix('info')->controller(\App\Http\Controllers\Info\InfoController::class)->group(function() {
+    Route::get('venue', 'venue')->name('info.venue');
+    Route::get('hotel', 'hotel')->name('info.hotel');
 });
 
 

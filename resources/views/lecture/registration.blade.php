@@ -8,7 +8,6 @@
 <form id="lectureForm" action="{{ route('apply.lecture.upsert') }}" method="post" enctype="multipart/form-data" onsubmit="return lectureCheck(this);">
     {{ csrf_field() }}
     <input type="hidden" name="sid" value="{{ isset($apply) ? encrypt($apply->sid) : '' }}"/>
-    <input type="hidden" name="saveMode" id="saveMode" value=""/>
     <input type="hidden" name="pageMode" id="pageMode" value="regist"/>
 
     @if(!isset($apply) )

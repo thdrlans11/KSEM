@@ -70,4 +70,14 @@ class RegistrationController extends Controller
         return $this->RegistrationService->memo($request);
     }
 
+    public function vipForm(Request $request)
+    {
+        return view('admin.registration.vip')->with( $this->RegistrationService->vipForm($request) );
+    }
+
+    public function vip(Request $request)
+    {
+        return $this->RegistrationService->vip($request);
+    }
+
 }
